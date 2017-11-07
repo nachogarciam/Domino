@@ -127,9 +127,9 @@ public class Control {
         }
         jugador = new Jugador(nombre, fichasJugador);
         listaJugadores.add(jugador);
-        System.out.println(jugador.getListaFichas().size());
-        System.out.println(jugador.getListaFichas().toString());
-        System.out.println(listaFichas.toString());
+//        System.out.println(jugador.getListaFichas().size());
+//        System.out.println(jugador.getListaFichas().toString());
+//        System.out.println(listaFichas.toString());
     }
 
     public static void iniciarJuego() {
@@ -161,12 +161,19 @@ public class Control {
     
     public static void obtenerDatos(Tablero tablero2){
         jugador=new Jugador("Player 2", tablero2.getListaTablero());
+        tablero2.getListaTablero().clear();
         tablero=tablero2;
     }
 
     public static Jugador getJugador() {
         return jugador;
     }
+
+    public static Tablero getTablero() {
+        return tablero;
+    }
+    
+    
     
     
     

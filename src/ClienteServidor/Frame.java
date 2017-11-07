@@ -169,7 +169,8 @@ public class Frame extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        System.out.println(Control.getJugador().getListaFichas().toString());
+//        System.out.println(Control.getJugador().getListaFichas().toString());
+        System.out.println(Control.getTablero().getListaTablero().toString());
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
