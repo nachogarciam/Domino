@@ -145,8 +145,11 @@ public class Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        control.crearJugador();
-        control.iniciarJuego(new Tablero());
+//        control.crearJugador("Player 1");
+        control.iniciarJuego();
+//        control.crearFichas();
+//        control.crearJugador("Player 1");
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
@@ -200,8 +203,7 @@ public class Frame extends javax.swing.JFrame {
         jPanel1.add(pt);
         jPanel1.revalidate();
         jPanel1.repaint();
-        
-       
+
     }
 
 

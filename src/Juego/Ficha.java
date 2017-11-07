@@ -53,6 +53,11 @@ public class Ficha {
     public void setEstadoB(boolean estadoB) {
         this.estadoB = estadoB;
     }
+
+    @Override
+    public String toString() {
+        return "Ficha{" + "ladoA=" + ladoA + ", ladoB=" + ladoB + '}';
+    }
     
     
     

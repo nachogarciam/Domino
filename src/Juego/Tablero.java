@@ -12,6 +12,16 @@ import java.util.ArrayList;
  *
  * @author Nacho
  */
-public class Tablero implements Serializable{
-    ArrayList<Ficha> listaTablero=new ArrayList<Ficha>();
+public class Tablero implements Serializable {
+
+    ArrayList<Ficha> listaTablero = new ArrayList<Ficha>();
+    static ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
+
+    public Tablero(){
+        
+    }
+    
+    public Tablero(ArrayList<Ficha> lista){
+        this.listaTablero.addAll(lista);
+    }
 }

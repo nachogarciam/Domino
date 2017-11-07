@@ -12,11 +12,15 @@ import java.util.ArrayList;
  * @author Nacho
  */
 public class Jugador {
-    String nombre="Player";
+    String nombre="";
     ArrayList<Ficha> listaFichas = new ArrayList<Ficha>();
     
     public Jugador(){
         
+    }
+    public Jugador(String nombre,ArrayList<Ficha> listaFichas){
+        this.nombre=nombre;
+        this.listaFichas.addAll(listaFichas);
     }
 
     public String getNombre() {

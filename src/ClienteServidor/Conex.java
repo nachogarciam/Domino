@@ -56,7 +56,6 @@ public class Conex {
                                     mensajeRecibido = (String) o;
                                 } else if (o.getClass().toString().equals("class Juego.Tablero")) {
                                     Frame.pintarTablero();
-                                    System.out.println("qweqw");
                                 }
 //                                
 

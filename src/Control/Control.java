@@ -12,6 +12,7 @@ import Juego.Ficha;
 import Juego.Jugador;
 import Juego.Tablero;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -19,13 +20,13 @@ import java.util.ArrayList;
  */
 public class Control {
 
-    ArrayList<Ficha> listaFichas = new ArrayList<Ficha>();
+    static ArrayList<Ficha> listaFichas = new ArrayList<Ficha>();
     static ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
     static Jugador jugador;
     static Conex c;
     static SocketCliente sc;
     public static SocketCliente sc2;
-    Tablero tablero=new Tablero();
+    static Tablero tablero;
 
     public void iniciarServidor() {
         Thread t1 = new Thread() {
@@ -56,7 +57,7 @@ public class Control {
         return c.getListaIps();
     }
 
-    public void crearFichas() {
+    public static void crearFichas() {
         Ficha ficha1 = new Ficha(0, 0);
         Ficha ficha2 = new Ficha(0, 1);
         Ficha ficha3 = new Ficha(0, 2);
@@ -113,21 +114,34 @@ public class Control {
         listaFichas.add(ficha26);
         listaFichas.add(ficha27);
         listaFichas.add(ficha28);
+        Collections.shuffle(listaFichas);
+
     }
 
-    public static void crearJugador() {
-        jugador = new Jugador();
-        listaJugadores.add(jugador);
-    }
+    public static void crearJugador(String nombre) {
+        ArrayList<Ficha> fichasJugador = new ArrayList<Ficha>();
 
-    public static void iniciarJuego(Object obj) {
-      if (sc2 == null) {
-            sc.enviarMensaje(obj);
-        } else {
-            sc2.enviarMensaje(obj);
+        for (int i = 0; i < 14; i++) {
+            fichasJugador.add(listaFichas.get(0));
+            listaFichas.remove(0);
         }
-        
-        
+        jugador = new Jugador(nombre, fichasJugador);
+        listaJugadores.add(jugador);
+        System.out.println(jugador.getListaFichas().size());
+        System.out.println(jugador.getListaFichas().toString());
+        System.out.println(listaFichas.toString());
+    }
+
+    public static void iniciarJuego() {
+        crearFichas();
+        crearJugador("Player 1");
+        tablero = new Tablero(listaFichas);
+        if (sc2 == null) {
+            sc.enviarMensaje(tablero);
+        } else {
+            sc2.enviarMensaje(tablero);
+        }
+
 //        Frame.iniciar(obj);
     }
 
@@ -138,10 +152,9 @@ public class Control {
             sc2.enviarMensaje();
         }
     }
-    
-    public void enviarMensaje(Object obj){
-        
+
+    public void enviarMensaje(Object obj) {
+
     }
-    
-    
+
 }
