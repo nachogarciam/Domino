@@ -23,7 +23,7 @@ public class Control {
     static ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
     static Jugador jugador;
     static Conex c;
-    SocketCliente sc;
+    static SocketCliente sc;
     public static SocketCliente sc2;
     Tablero tablero=new Tablero();
 
@@ -121,8 +121,11 @@ public class Control {
     }
 
     public static void iniciarJuego(Object obj) {
-        sc2.enviarMensaje(obj);
-        
+      if (sc2 == null) {
+            sc.enviarMensaje(obj);
+        } else {
+            sc2.enviarMensaje(obj);
+        }
         
         
 //        Frame.iniciar(obj);
@@ -137,11 +140,7 @@ public class Control {
     }
     
     public void enviarMensaje(Object obj){
-         if (sc2 == null) {
-            sc.enviarMensaje(obj);
-        } else {
-            sc2.enviarMensaje(obj);
-        }
+        
     }
     
     
