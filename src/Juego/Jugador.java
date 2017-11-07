@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class Jugador implements Serializable{
     String nombre="";
     ArrayList<Ficha> listaFichas = new ArrayList<Ficha>();
+    boolean turno=false;
     
     public Jugador(){
         
@@ -24,6 +25,14 @@ public class Jugador implements Serializable{
         this.listaFichas.addAll(listaFichas);
     }
 
+    public void tieneMula(){
+        for (Ficha listaFicha : listaFichas) {
+            if(listaFicha.getLadoA()==6&&listaFicha.getLadoB()==6){
+                turno=true;
+            }
+        }
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -38,6 +47,14 @@ public class Jugador implements Serializable{
 
     public void setListaFichas(ArrayList<Ficha> listaFichas) {
         this.listaFichas = listaFichas;
+    }
+
+    public boolean isTurno() {
+        return turno;
+    }
+
+    public void setTurno(boolean turno) {
+        this.turno = turno;
     }
     
     

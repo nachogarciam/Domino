@@ -58,6 +58,7 @@ public class Conex {
                                 } else if (o.getClass().toString().equals("class Juego.Tablero")) {
                                     Frame.pintarTablero();
                                     Control.obtenerDatos((Tablero) o);
+                                    System.out.println("Tu turno es: "+ Control.getJugador().isTurno());
                                 }
 //                                
 

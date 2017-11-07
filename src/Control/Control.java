@@ -126,6 +126,7 @@ public class Control {
             listaFichas.remove(0);
         }
         jugador = new Jugador(nombre, fichasJugador);
+        jugador.tieneMula();
         listaJugadores.add(jugador);
 //        System.out.println(jugador.getListaFichas().size());
 //        System.out.println(jugador.getListaFichas().toString());
@@ -135,14 +136,15 @@ public class Control {
     public static void iniciarJuego() {
         crearFichas();
         crearJugador("Player 1");
-        tablero = new Tablero(listaFichas);
+        
+        tablero = new Tablero(listaFichas, listaJugadores);
+        
         if (sc2 == null) {
             sc.enviarMensaje(tablero);
         } else {
             sc2.enviarMensaje(tablero);
         }
-
-//        Frame.iniciar(obj);
+        tablero.getListaTablero().clear();
     }
 
     public void enviarMensaje() {
@@ -157,12 +159,13 @@ public class Control {
 
     }
 
-    
-    
-    public static void obtenerDatos(Tablero tablero2){
-        jugador=new Jugador("Player 2", tablero2.getListaTablero());
+    public static void obtenerDatos(Tablero tablero2) {
+        jugador = new Jugador("Player 2", tablero2.getListaTablero());
+        if(!tablero2.getListaJugadores().get(0).isTurno()){
+            jugador.setTurno(true);
+        }
         tablero2.getListaTablero().clear();
-        tablero=tablero2;
+        tablero = tablero2;
     }
 
     public static Jugador getJugador() {
@@ -172,9 +175,5 @@ public class Control {
     public static Tablero getTablero() {
         return tablero;
     }
-    
-    
-    
-    
-    
+
 }
