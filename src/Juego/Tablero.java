@@ -24,4 +24,11 @@ public class Tablero implements Serializable {
     public Tablero(ArrayList<Ficha> lista){
         this.listaTablero.addAll(lista);
     }
+
+    public ArrayList<Ficha> getListaTablero() {
+        return listaTablero;
+    }
+    
+    
+    
 }

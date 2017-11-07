@@ -157,4 +157,17 @@ public class Control {
 
     }
 
+    
+    
+    public static void obtenerDatos(Tablero tablero2){
+        jugador=new Jugador("Player 2", tablero2.getListaTablero());
+        tablero=tablero2;
+    }
+
+    public static Jugador getJugador() {
+        return jugador;
+    }
+    
+    
+    
 }
