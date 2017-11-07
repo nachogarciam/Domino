@@ -56,7 +56,7 @@ public class Conex {
                                 if (o.getClass().toString().equals("class java.lang.String")) {
                                     mensajeRecibido = (String) o;
                                 } else if (o.getClass().toString().equals("class Juego.Tablero")) {
-                                    Frame.pintarTablero();
+//                                    Frame.pintarTablero();
                                     Control.obtenerDatos((Tablero) o);
                                     System.out.println("Tu turno es: "+ Control.getJugador().isTurno());
                                 }
