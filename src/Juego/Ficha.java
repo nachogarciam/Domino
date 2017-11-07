@@ -5,11 +5,13 @@
  */
 package Juego;
 
+import java.io.Serializable;
+
 /**
  *
  * @author jesus
  */
-public class Ficha {
+public class Ficha implements Serializable {
 
     int ladoA;
     int ladoB;
