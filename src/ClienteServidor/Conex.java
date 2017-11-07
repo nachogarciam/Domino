@@ -30,7 +30,7 @@ public class Conex {
             so = new Socket();
 
             System.out.println("Esperando una conexión:");
-            listaIps.add("127.0.0.1");
+            listaIps.add("192.168.0.2");
             while (true) {
                 so = sc.accept();
 
@@ -56,7 +56,7 @@ public class Conex {
                                     mensajeRecibido = (String) o;
                                 } else if (o.getClass().toString().equals("class Juego.Tablero")) {
                                     Frame.pintarTablero();
-                                   
+                                    System.out.println("qweqw");
                                 }
 //                                
 

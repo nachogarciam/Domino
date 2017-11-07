@@ -10,6 +10,7 @@ import ClienteServidor.Frame;
 import ClienteServidor.SocketCliente;
 import Juego.Ficha;
 import Juego.Jugador;
+import Juego.Tablero;
 import java.util.ArrayList;
 
 /**
@@ -19,11 +20,12 @@ import java.util.ArrayList;
 public class Control {
 
     ArrayList<Ficha> listaFichas = new ArrayList<Ficha>();
-    ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
-    Jugador jugador;
+    static ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
+    static Jugador jugador;
     static Conex c;
     SocketCliente sc;
     public static SocketCliente sc2;
+    Tablero tablero=new Tablero();
 
     public void iniciarServidor() {
         Thread t1 = new Thread() {
@@ -113,7 +115,7 @@ public class Control {
         listaFichas.add(ficha28);
     }
 
-    public void crearJugador() {
+    public static void crearJugador() {
         jugador = new Jugador();
         listaJugadores.add(jugador);
     }
@@ -135,6 +137,12 @@ public class Control {
     }
     
     public void enviarMensaje(Object obj){
-        sc2.enviarMensaje(obj);
+         if (sc2 == null) {
+            sc.enviarMensaje(obj);
+        } else {
+            sc2.enviarMensaje(obj);
+        }
     }
+    
+    
 }
