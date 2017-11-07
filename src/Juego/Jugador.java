@@ -5,13 +5,14 @@
  */
 package Juego;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Nacho
  */
-public class Jugador {
+public class Jugador implements Serializable{
     String nombre="";
     ArrayList<Ficha> listaFichas = new ArrayList<Ficha>();
     
