@@ -1,6 +1,7 @@
 package ClienteServidor;
 
 import Control.Control;
+import Juego.Tablero;
 import java.net.*;
 
 import java.io.*;
@@ -56,6 +57,7 @@ public class Conex {
                                     mensajeRecibido = (String) o;
                                 } else if (o.getClass().toString().equals("class Juego.Tablero")) {
                                     Frame.pintarTablero();
+                                    Control.obtenerDatos((Tablero) o);
                                 }
 //                                
 
