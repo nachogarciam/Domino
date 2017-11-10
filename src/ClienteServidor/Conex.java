@@ -61,8 +61,12 @@ public class Conex {
                                     Control.obtenerDatos((Tablero) o);
                                     System.out.println("Tu turno es: " + Control.getJugador().isTurno());
                                 }else if(o.getClass().toString().equals("class Juego.Movimiento")){
+                                    System.out.println("qweqw");
                                     Movimiento m=(Movimiento) o;
+                                    
+                                    System.out.println(m.getJugador().isTurno());
                                     if(m.getJugador().isTurno()){
+                                        System.out.println("qweqw");
                                         Control.getJugador().setTurno(true);
                                     }
                                 }

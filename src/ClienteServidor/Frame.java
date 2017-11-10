@@ -163,7 +163,7 @@ public class Frame extends javax.swing.JFrame {
 //            e.enviarMensaje();
 //        }
 
-        control.enviarMensaje();
+        control.moverPieza();
     }//GEN-LAST:event_btnMensajeActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

@@ -251,7 +251,7 @@ public class Control {
         //Pruebas
         tablero.getListaTablero().add(jugador.getListaFichas().get(0));
         jugador.getListaFichas().remove(0);
-        jugador.setTurno(false);
+//        jugador.setTurno(false);
         Movimiento m = new Movimiento(jugador, tablero.getListaTablero());
 
         if (sc2 == null) {
