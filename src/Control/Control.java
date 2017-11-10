@@ -176,5 +176,7 @@ public class Control {
         return tablero;
     }
 
-  
+  public void asdqw(){
+      
+  }
 }
