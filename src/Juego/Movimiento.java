@@ -17,7 +17,9 @@ public class Movimiento implements Serializable {
     Jugador jugador=new Jugador();
     
     public Movimiento(Jugador jugador,ArrayList<Ficha> listaFichas){
-        this.jugador=jugador;
+        System.out.println(jugador.getNombre());
+        this.jugador.setNombre(jugador.getNombre());
+        this.jugador.setTurno(jugador.isTurno());
         this.listaFichas.addAll(listaFichas);
     }
 
