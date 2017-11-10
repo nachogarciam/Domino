@@ -145,6 +145,7 @@ public class Control {
             sc2.enviarMensaje(tablero);
         }
         tablero.getListaTablero().clear();
+        Frame.pintarTablero();
     }
 
     public void enviarMensaje() {
