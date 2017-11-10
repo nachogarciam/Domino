@@ -1,6 +1,7 @@
 package ClienteServidor;
 
 import Control.Control;
+import Juego.Movimiento;
 import Juego.Tablero;
 import java.net.*;
 
@@ -59,6 +60,11 @@ public class Conex {
                                     Frame.pintarTablero();
                                     Control.obtenerDatos((Tablero) o);
                                     System.out.println("Tu turno es: " + Control.getJugador().isTurno());
+                                }else if(o.getClass().toString().equals("class Juego.Movimiento")){
+                                    Movimiento m=(Movimiento) o;
+                                    if(m.getJugador().isTurno()){
+                                        Control.getJugador().setTurno(true);
+                                    }
                                 }
 //                                
 

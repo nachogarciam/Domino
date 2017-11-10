@@ -10,6 +10,7 @@ import ClienteServidor.Frame;
 import ClienteServidor.SocketCliente;
 import Juego.Ficha;
 import Juego.Jugador;
+import Juego.Movimiento;
 import Juego.Tablero;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -155,7 +156,7 @@ public class Control {
             sc2.enviarMensaje(tablero);
         }
         tablero.getListaTablero().clear();
-        Frame.pintarTablero();
+//        Frame.pintarTablero();
         iniciarJuego();
     }
 
@@ -246,4 +247,18 @@ public class Control {
         Control.miIp = miIp;
     }
 
+    public void moverPieza() {
+        //Pruebas
+        tablero.getListaTablero().add(jugador.getListaFichas().get(0));
+        jugador.getListaFichas().remove(0);
+        jugador.setTurno(false);
+        Movimiento m = new Movimiento(jugador, tablero.getListaTablero());
+
+        if (sc2 == null) {
+            sc.enviarMensaje(m);
+        } else {
+            sc2.enviarMensaje(m);
+        }
+        jugador.setTurno(false);
+    }
 }

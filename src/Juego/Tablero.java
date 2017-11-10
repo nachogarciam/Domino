@@ -39,5 +39,7 @@ public class Tablero implements Serializable {
     public ArrayList<String> getListaIps() {
         return listaIps;
     }
+    
+  
 
 }
