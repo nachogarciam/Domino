@@ -28,6 +28,7 @@ public class Control {
     static SocketCliente sc;
     public static SocketCliente sc2;
     static Tablero tablero;
+    static String miIp = "192.168.0.19";
 
     public void iniciarServidor() {
         Thread t1 = new Thread() {
@@ -122,10 +123,18 @@ public class Control {
     public static void crearJugador(String nombre) {
         ArrayList<Ficha> fichasJugador = new ArrayList<Ficha>();
 
-        for (int i = 0; i < 14; i++) {
-            fichasJugador.add(listaFichas.get(0));
-            listaFichas.remove(0);
+        if (listaIps.size() == 2) {
+            for (int i = 0; i < 14; i++) {
+                fichasJugador.add(listaFichas.get(0));
+                listaFichas.remove(0);
+            }
+        } else if (listaIps.size() == 4) {
+            for (int i = 0; i < 7; i++) {
+                fichasJugador.add(listaFichas.get(0));
+                listaFichas.remove(0);
+            }
         }
+
         jugador = new Jugador(nombre, fichasJugador);
         jugador.tieneMula();
         listaJugadores.add(jugador);
@@ -138,7 +147,7 @@ public class Control {
         crearFichas();
         crearJugador("Player 1");
 
-        tablero = new Tablero(listaFichas, listaJugadores);
+        tablero = new Tablero(listaFichas, listaJugadores, listaIps);
         System.out.println(listaIps.size());
         if (sc2 == null) {
             sc.enviarMensaje(tablero);
@@ -162,10 +171,39 @@ public class Control {
     }
 
     public static void obtenerDatos(Tablero tablero2) {
-        jugador = new Jugador("Player 2", tablero2.getListaTablero());
-        if (!tablero2.getListaJugadores().get(0).isTurno()) {
-            jugador.setTurno(true);
+        if (tablero2.getListaIps().size() == 4) {
+            for (int i = 0; i < tablero2.getListaIps().size(); i++) {
+                if (miIp.equalsIgnoreCase(tablero2.getListaIps().get(i))) {
+
+                    if (i == 1) {
+                        for (int j = 0; j < 7; j++) {
+                            listaFichas.add(tablero2.getListaTablero().get(j));
+                        }
+                        jugador = new Jugador("Player " + i + 1, listaFichas);
+                    }
+
+                    if (i == 2) {
+                        for (int j = 7; j < 14; j++) {
+                            listaFichas.add(tablero2.getListaTablero().get(j));
+                        }
+                        jugador = new Jugador("Player " + i + 1, listaFichas);
+                    }
+                    if (i == 3) {
+                        for (int j = 14; j < 21; j++) {
+                            listaFichas.add(tablero2.getListaTablero().get(j));
+                        }
+                        jugador = new Jugador("Player " + i + 1, listaFichas);
+                    }
+                }
+            }
+
+        } else {
+            jugador = new Jugador("Player 2", tablero2.getListaTablero());
         }
+        jugador.tieneMula();
+//        if (jugador.isTurno()) {
+//            jugador.setTurno(true);
+//        }
         tablero2.getListaTablero().clear();
         tablero = tablero2;
     }
@@ -178,5 +216,12 @@ public class Control {
         return tablero;
     }
 
-  
+    public static String getMiIp() {
+        return miIp;
+    }
+
+    public static void setMiIp(String miIp) {
+        Control.miIp = miIp;
+    }
+
 }

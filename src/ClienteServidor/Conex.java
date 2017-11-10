@@ -31,7 +31,7 @@ public class Conex {
             so = new Socket();
 
             System.out.println("Esperando una conexión:");
-            Control.listaIps.add("192.168.0.2");
+            Control.listaIps.add(Control.getMiIp());
             while (true) {
                 so = sc.accept();
 

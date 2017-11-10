@@ -15,15 +15,17 @@ import java.util.ArrayList;
 public class Tablero implements Serializable {
 
     ArrayList<Ficha> listaTablero = new ArrayList<Ficha>();
-     ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
+    ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
+    ArrayList<String> listaIps = new ArrayList<String>();
 
-    public Tablero(){
-        
+    public Tablero() {
+
     }
-    
-    public Tablero(ArrayList<Ficha> lista, ArrayList<Jugador> listaJugador){
+
+    public Tablero(ArrayList<Ficha> lista, ArrayList<Jugador> listaJugador, ArrayList<String> listaIps) {
         this.listaTablero.addAll(lista);
         this.listaJugadores.addAll(listaJugador);
+        this.listaIps=listaIps;
     }
 
     public ArrayList<Ficha> getListaTablero() {
@@ -33,7 +35,9 @@ public class Tablero implements Serializable {
     public ArrayList<Jugador> getListaJugadores() {
         return listaJugadores;
     }
-    
-    
-    
+
+    public ArrayList<String> getListaIps() {
+        return listaIps;
+    }
+
 }
