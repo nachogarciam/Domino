@@ -5,7 +5,8 @@
  */
 package ClienteServidor;
 
-import static java.awt.Frame.MAXIMIZED_BOTH;
+import javax.swing.JFrame;
+import java.awt.Frame;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
@@ -13,13 +14,15 @@ import java.awt.GraphicsEnvironment;
  *
  * @author Nacho
  */
-public class PanelTablero extends javax.swing.JPanel {
+public class PanelTablero extends javax.swing.JFrame {
 
     /**
      * Creates new form PanelTablero
      */
     public PanelTablero() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //         this.resize(400, 300);
         
     }
@@ -33,30 +36,26 @@ public class PanelTablero extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
-        jLabel1.setText("Este es el juego");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondomadera.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jLabel2.setName(""); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(157, 157, 157)
-                .addComponent(jLabel1)
-                .addContainerGap(167, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(jLabel1)
-                .addContainerGap(151, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 544, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
