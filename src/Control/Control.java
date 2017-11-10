@@ -176,7 +176,5 @@ public class Control {
         return tablero;
     }
 
-    public static void NACHONOCORRE(){
-        
-    }
+  
 }
