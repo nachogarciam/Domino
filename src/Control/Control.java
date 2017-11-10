@@ -260,5 +260,6 @@ public class Control {
             sc2.enviarMensaje(m);
         }
         jugador.setTurno(false);
+        Frame.btnMensaje.setEnabled(false);
     }
 }

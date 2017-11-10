@@ -57,16 +57,17 @@ public class Conex {
                                 if (o.getClass().toString().equals("class java.lang.String")) {
                                     mensajeRecibido = (String) o;
                                 } else if (o.getClass().toString().equals("class Juego.Tablero")) {
-                                    Frame.pintarTablero();
+//                                    Frame.pintarTablero();
                                     Control.obtenerDatos((Tablero) o);
                                     System.out.println("Tu turno es: " + Control.getJugador().isTurno());
                                 }else if(o.getClass().toString().equals("class Juego.Movimiento")){
-                                    System.out.println("qweqw");
+//                                    System.out.println("qweqw");
                                     Movimiento m=(Movimiento) o;
                                     
                                     System.out.println(m.getJugador().isTurno());
                                     if(m.getJugador().isTurno()){
-                                        System.out.println("qweqw");
+//                                        System.out.println("qweqw");
+                                        Frame.btnMensaje.setEnabled(true);
                                         Control.getJugador().setTurno(true);
                                     }
                                 }
