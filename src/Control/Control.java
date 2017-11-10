@@ -22,6 +22,7 @@ public class Control {
 
     static ArrayList<Ficha> listaFichas = new ArrayList<Ficha>();
     static ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
+    public static ArrayList<String> listaIps = new ArrayList<String>();
     static Jugador jugador;
     static Conex c;
     static SocketCliente sc;
@@ -50,11 +51,11 @@ public class Control {
     }
 
     public void agregarIpLista(String ip) {
-        c.listaIps.add(ip);
+        listaIps.add(ip);
     }
 
     public ArrayList getListaIps() {
-        return c.getListaIps();
+        return listaIps;
     }
 
     public static void crearFichas() {
@@ -136,9 +137,9 @@ public class Control {
     public static void iniciarJuego() {
         crearFichas();
         crearJugador("Player 1");
-        
+
         tablero = new Tablero(listaFichas, listaJugadores);
-        
+        System.out.println(listaIps.size());
         if (sc2 == null) {
             sc.enviarMensaje(tablero);
         } else {
@@ -162,7 +163,7 @@ public class Control {
 
     public static void obtenerDatos(Tablero tablero2) {
         jugador = new Jugador("Player 2", tablero2.getListaTablero());
-        if(!tablero2.getListaJugadores().get(0).isTurno()){
+        if (!tablero2.getListaJugadores().get(0).isTurno()) {
             jugador.setTurno(true);
         }
         tablero2.getListaTablero().clear();
@@ -177,5 +178,5 @@ public class Control {
         return tablero;
     }
 
- 
+  
 }

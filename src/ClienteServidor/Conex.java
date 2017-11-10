@@ -18,7 +18,7 @@ public class Conex {
 
     ArrayList<Thread> lista = new ArrayList<Thread>();
     ArrayList<Socket> listaSockets = new ArrayList<Socket>();
-    public ArrayList<String> listaIps = new ArrayList<String>();
+   
 
     String ip;
     ObjectOutputStream mensaje;
@@ -31,7 +31,7 @@ public class Conex {
             so = new Socket();
 
             System.out.println("Esperando una conexión:");
-            listaIps.add("192.168.0.2");
+            Control.listaIps.add("192.168.0.2");
             while (true) {
                 so = sc.accept();
 
@@ -39,7 +39,7 @@ public class Conex {
                 System.out.println("Un cliente se ha conectado.");
 
                 System.out.println("Confirmando conexion al cliente....");
-                System.out.println(listaIps);
+                System.out.println(Control.listaIps);
 
                 Thread t = new Thread() {
                     public void run() {
@@ -56,9 +56,9 @@ public class Conex {
                                 if (o.getClass().toString().equals("class java.lang.String")) {
                                     mensajeRecibido = (String) o;
                                 } else if (o.getClass().toString().equals("class Juego.Tablero")) {
-//                                    Frame.pintarTablero();
+                                    Frame.pintarTablero();
                                     Control.obtenerDatos((Tablero) o);
-                                    System.out.println("Tu turno es: "+ Control.getJugador().isTurno());
+                                    System.out.println("Tu turno es: " + Control.getJugador().isTurno());
                                 }
 //                                
 
@@ -66,22 +66,21 @@ public class Conex {
                                 ip = ip.substring(1);
                                 System.out.println(mensajeRecibido);
 
-                                if (listaIps.isEmpty()) {
+                                if (Control.listaIps.isEmpty()) {
                                     System.out.println(ip);
-                                    listaIps.add(ip);
+                                    Control.listaIps.add(ip);
                                     Control.conectarseDeVuelta(ip);
 
-                                } else if (!ip.equals(listaIps.get(listaIps.size() - 1))) {
+                                } else if (!ip.equals(Control.listaIps.get(Control.listaIps.size() - 1))) {
 
-                                    System.out.println(ip + "  &   " + listaIps.get(listaIps.size() - 1));
-                                    listaIps.add(ip);
+                                    System.out.println(ip + "  &   " + Control.listaIps.get(Control.listaIps.size() - 1));
+                                    Control.listaIps.add(ip);
                                     Control.conectarseDeVuelta(ip);
                                 } else {
                                     //ya esta conectado
 //                                    System.out.println("Ya estas conecto, no ocupas volverte a conectar kbron uwu");
                                 }
 
-                               
                             } catch (IOException ex) {
                                 Logger.getLogger(Conex.class.getName()).log(Level.SEVERE, null, ex);
                             } catch (ClassNotFoundException ex) {
@@ -97,7 +96,6 @@ public class Conex {
                 t.start();
             }
 
-
 //   sc.close();//Aqui se cierra la conexión con el cliente
         } catch (Exception e) {
 
@@ -107,8 +105,6 @@ public class Conex {
 
     }
 
-    public ArrayList<String> getListaIps() {
-        return listaIps;
-    }
+   
 
 }
