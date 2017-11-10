@@ -5,6 +5,10 @@
  */
 package ClienteServidor;
 
+import static java.awt.Frame.MAXIMIZED_BOTH;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+
 /**
  *
  * @author Nacho
@@ -16,7 +20,8 @@ public class PanelTablero extends javax.swing.JPanel {
      */
     public PanelTablero() {
         initComponents();
-         this.resize(400, 300);
+//         this.resize(400, 300);
+        
     }
 
     /**

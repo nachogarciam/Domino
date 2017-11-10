@@ -134,17 +134,17 @@ public class Control {
     }
 
     public static void iniciarJuego() {
-        crearFichas();
-        crearJugador("Player 1");
+//        crearFichas();
+//        crearJugador("Player 1");
         
         tablero = new Tablero(listaFichas, listaJugadores);
         
-        if (sc2 == null) {
-            sc.enviarMensaje(tablero);
-        } else {
-            sc2.enviarMensaje(tablero);
-        }
-        tablero.getListaTablero().clear();
+//        if (sc2 == null) {
+//            sc.enviarMensaje(tablero);
+//        } else {
+//            sc2.enviarMensaje(tablero);
+//        }
+//        tablero.getListaTablero().clear();
     }
 
     public void enviarMensaje() {
