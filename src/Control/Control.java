@@ -143,7 +143,7 @@ public class Control {
 //        System.out.println(listaFichas.toString());
     }
 
-    public static void iniciarJuego() {
+    public static void iniciar() {
         crearFichas();
         crearJugador("Player 1");
 
@@ -156,6 +156,25 @@ public class Control {
         }
         tablero.getListaTablero().clear();
         Frame.pintarTablero();
+        iniciarJuego();
+    }
+
+    public static void iniciarJuego() {
+        Thread t = new Thread() {
+            public void run() {
+                while (true) {
+                    if (jugador.isTurno()) {
+                        //aqui algo para desbloquear las fichas
+                        Frame.btnMensaje.setEnabled(true);
+
+                    } else {
+                        Frame.btnMensaje.setEnabled(false);
+                    }
+                }
+            }
+
+        };
+        t.start();
     }
 
     public void enviarMensaje() {
@@ -193,6 +212,7 @@ public class Control {
                             listaFichas.add(tablero2.getListaTablero().get(j));
                         }
                         jugador = new Jugador("Player " + i + 1, listaFichas);
+
                     }
                 }
             }
@@ -200,12 +220,14 @@ public class Control {
         } else {
             jugador = new Jugador("Player 2", tablero2.getListaTablero());
         }
+
         jugador.tieneMula();
 //        if (jugador.isTurno()) {
 //            jugador.setTurno(true);
 //        }
         tablero2.getListaTablero().clear();
         tablero = tablero2;
+        iniciarJuego();
     }
 
     public static Jugador getJugador() {

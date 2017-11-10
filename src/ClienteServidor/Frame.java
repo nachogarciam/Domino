@@ -44,7 +44,7 @@ public class Frame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnMensaje = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -62,10 +62,10 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Mensaje");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnMensaje.setText("Mensaje");
+        btnMensaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnMensajeActionPerformed(evt);
             }
         });
 
@@ -98,11 +98,14 @@ public class Frame extends javax.swing.JFrame {
                         .addComponent(jButton5)
                         .addGap(48, 48, 48)
                         .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 304, Short.MAX_VALUE)
-                        .addComponent(jButton3))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMensaje)
+                        .addGap(172, 172, 172)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -116,17 +119,15 @@ public class Frame extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(62, 62, 62)
                 .addComponent(jButton2)
-                .addGap(63, 63, 63)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jButton4))
-                            .addComponent(jButton3))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMensaje)
+                        .addGap(34, 34, 34)
+                        .addComponent(jButton4)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(104, 104, 104)
                         .addComponent(jButton5)
                         .addContainerGap())))
         );
@@ -154,7 +155,7 @@ public class Frame extends javax.swing.JFrame {
         control.agregarIpLista(ip);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMensajeActionPerformed
         // TODO add your handling code here:
 //        if (e == null) {
 //           control.enviarMensaje();
@@ -163,11 +164,11 @@ public class Frame extends javax.swing.JFrame {
 //        }
 
         control.enviarMensaje();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnMensajeActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 //        control.crearJugador("Player 1");
-        control.iniciarJuego();
+        control.iniciar();
         System.out.println("Tu turno es: " + control.getJugador().isTurno());
 
 //        control.crearFichas();
@@ -238,8 +239,8 @@ public class Frame extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton btnMensaje;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
