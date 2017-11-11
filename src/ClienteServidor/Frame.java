@@ -6,10 +6,13 @@
 package ClienteServidor;
 
 import Control.Control;
+import Juego.Ficha;
 import Juego.Tablero;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +24,7 @@ public class Frame extends javax.swing.JFrame {
 //    public static SocketCliente e;
 //    SocketCliente clienteNuevo;
     static Control control = new Control();
+    private Map map = new HashMap();
 
     /**
      * Creates new form Frame
@@ -31,6 +35,23 @@ public class Frame extends javax.swing.JFrame {
 //        GraphicsDevice gd = ge.getDefaultScreenDevice();
 //        gd.setFullScreenWindow(this);
         control.iniciarServidor();
+    }
+
+    public void Nuevo_Objeto() {
+        //aumenta contador en +1        
+//        this.contador_de_objetos +=1;
+        //Crea una nueva instancia de "MiObjeto"
+        Ficha tmp = new Ficha(0,0);
+        //coloca al objeto creado en una posicion aleatoria
+        tmp.setLocation(100, 100);
+        //agrega el objeto en el MAP
+        map.put("Ficha", tmp);
+        //agrega el KEY en el List
+//        listModel.addElement( "Objeto " + this.contador_de_objetos );
+        //agrega el objeto en el JPanel
+        this.jPanel1.add(tmp);
+        //actualiza graficos
+        this.jPanel1.repaint();
     }
 
     /**
@@ -162,10 +183,11 @@ public class Frame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 //        String nombre = JOptionPane.showInputDialog("¿Cuál es tu nombre?");
-        String ip = JOptionPane.showInputDialog("¿Cual es la ip?");
-
-        control.conectarse(ip);
-        control.agregarIpLista(ip);
+//        String ip = JOptionPane.showInputDialog("¿Cual es la ip?");
+//
+//        control.conectarse(ip);
+//        control.agregarIpLista(ip);
+        Nuevo_Objeto();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMensajeActionPerformed
