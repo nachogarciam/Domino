@@ -242,7 +242,7 @@ public class Frame extends javax.swing.JFrame {
 //       control.conectarseDeVuelta(ip);
 //    }
     public static void pintarTablero() {
-        PanelTablero pt = new PanelTablero();
+        TableroPanel pt = new TableroPanel();
         jPanel1.removeAll();
         jPanel1.add(pt);
         jPanel1.revalidate();
