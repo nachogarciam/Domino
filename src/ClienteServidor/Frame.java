@@ -25,6 +25,7 @@ public class Frame extends javax.swing.JFrame {
 //    SocketCliente clienteNuevo;
     static Control control = new Control();
     private Map map = new HashMap();
+    Ficha ficha;
 
     /**
      * Creates new form Frame
@@ -41,17 +42,18 @@ public class Frame extends javax.swing.JFrame {
         //aumenta contador en +1        
 //        this.contador_de_objetos +=1;
         //Crea una nueva instancia de "MiObjeto"
-        Ficha tmp = new Ficha(0,0);
+        ficha = new Ficha(0, 0);
         //coloca al objeto creado en una posicion aleatoria
-        tmp.setLocation(100, 100);
+        ficha.setLocation(100, 100);
         //agrega el objeto en el MAP
-        map.put("Ficha", tmp);
+        map.put("Ficha", ficha);
         //agrega el KEY en el List
 //        listModel.addElement( "Objeto " + this.contador_de_objetos );
         //agrega el objeto en el JPanel
-        this.jPanel1.add(tmp);
+        this.jPanel1.add(ficha);
         //actualiza graficos
         this.jPanel1.repaint();
+
     }
 
     /**
@@ -69,6 +71,7 @@ public class Frame extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(6);
@@ -121,6 +124,13 @@ public class Frame extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoInicio.png"))); // NOI18N
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -140,7 +150,9 @@ public class Frame extends javax.swing.JFrame {
                         .addComponent(btnMensaje)
                         .addGap(213, 213, 213))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(411, 411, 411)
+                .addGap(332, 332, 332)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, Short.MAX_VALUE)
                 .addGap(147, 147, 147)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, Short.MAX_VALUE)
@@ -162,6 +174,8 @@ public class Frame extends javax.swing.JFrame {
                         .addContainerGap(175, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(53, 53, 53)
                         .addComponent(jButton5)
                         .addGap(153, 153, 153))))
         );
@@ -217,6 +231,13 @@ public class Frame extends javax.swing.JFrame {
 //        System.out.println(Control.getTablero().getListaTablero().toString());
         System.out.println();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ficha.rotar(90);
+        this.jPanel1.repaint();
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,6 +296,7 @@ public class Frame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnMensaje;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;

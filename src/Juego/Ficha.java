@@ -5,6 +5,7 @@
  */
 package Juego;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -13,6 +14,7 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.geom.AffineTransform;
 import java.io.Serializable;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -30,6 +32,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     boolean estadoA = false;
     boolean estadoB = false;
 
+    int grados = 0;
     /**
      * Identificador de objeto
      */
@@ -41,7 +44,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     /**
      * Tamaño de imagen
      */
-    private Dimension d = new Dimension(300, 300);
+    private Dimension d = new Dimension(80, 80);
     /**
      * variable que sirve para calcular el movimiento del objeto
      */
@@ -59,15 +62,15 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
      */
     private int nuevo_X = 1;
     private int nuevo_Y = 1;
-    
+
     public Ficha(int ladoA, int ladoB) {
         this.ladoA = ladoA;
         this.ladoB = ladoB;
-                this.setToolTipText("Ficha");
+        this.setToolTipText("Ficha");
         this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.setSize(d);
         this.setPreferredSize(d);
-        this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/Fichas/"+ladoA+"_"+ladoB+".png")));
+        this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/Fichas/" + ladoA + "_" + ladoB + ".png")));
         this.setText("");
         this.setVisible(true);
         this.setLocation(posicion);
@@ -112,6 +115,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     public String toString() {
         return "Ficha{" + "ladoA=" + ladoA + ", ladoB=" + ladoB + '}';
     }
+
     @Override
     public void mouseClicked(MouseEvent e) {
     }
@@ -159,18 +163,20 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         return new Point((int) (target_location.getX() + cursor.getX()),
                 (int) (target_location.getY() + cursor.getY()));
     }
-   
-        public void paintComponent(Graphics g) {
 
-            Graphics2D gx = (Graphics2D) g;
+    public void rotar(int grados) {
+        this.grados=grados;
+        repaint();
+    }
 
-            gx.rotate(0.2, getX() + getWidth() / 2, getY() + getHeight() / 2); //Rotate 0.2 radians around the center of the label
+    public void paintComponent(Graphics g) {
+        double r = Math.toRadians(grados); //se convierte a radianes lo grados
 
-            super.paintComponent(g);
+        Graphics2D gx = (Graphics2D) g;
 
-        }
+        gx.rotate(r, getWidth() / 2, getHeight() / 2); //Rotate 0.2 radians around the center of the label
 
-    
+        super.paintComponent(g);
 
-    
+    }
 }
