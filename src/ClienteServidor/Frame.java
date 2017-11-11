@@ -55,7 +55,13 @@ public class Frame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(108, 122, 137));
 
-        jButton2.setText("Conectarse");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnConex.png"))); // NOI18N
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setDefaultCapable(false);
+        jButton2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnConex2.png"))); // NOI18N
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnConex1.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -70,6 +76,12 @@ public class Frame extends javax.swing.JFrame {
         });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonplaychido.png"))); // NOI18N
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setDefaultCapable(false);
+        jButton4.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnplay2.png"))); // NOI18N
+        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnplay1.png"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -98,8 +110,7 @@ public class Frame extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1210, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnMensaje)
                         .addGap(213, 213, 213))))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -108,8 +119,10 @@ public class Frame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(539, 539, 539))
+                .addComponent(jButton2)
+                .addGap(113, 113, 113)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(376, 376, 376))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,18 +130,18 @@ public class Frame extends javax.swing.JFrame {
                 .addGap(90, 90, 90)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(51, 51, 51)
-                        .addComponent(jButton5)
-                        .addGap(153, 153, 153))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
+                        .addGap(88, 88, 88)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton4)
+                            .addComponent(jButton2))
+                        .addGap(35, 35, 35)
                         .addComponent(btnMensaje)
-                        .addContainerGap(237, Short.MAX_VALUE))))
+                        .addContainerGap(237, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5)
+                        .addGap(153, 153, 153))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
