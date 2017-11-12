@@ -281,4 +281,6 @@ public class Control {
         jPanel1.repaint();
 //        pt.Centrar();
     }
+     
+     
 }
