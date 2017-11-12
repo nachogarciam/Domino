@@ -240,9 +240,9 @@ public class Frame extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 //        control.crearJugador("Player 1");
-//        control.iniciar();
-//        System.out.println("Tu turno es: " + control.getJugador().isTurno());
-        pintarTablero();
+        control.iniciar();
+        System.out.println("Tu turno es: " + control.getJugador().isTurno());
+//        pintarTablero();
 //        control.crearFichas();
 //        control.crearJugador("Player 1");
 
