@@ -24,6 +24,7 @@ import javax.swing.ImageIcon;
 public class TableroPanel extends javax.swing.JPanel {
 
     EspacioFicha e;
+    Hub hub;
     Ficha ficha;
     public static Map map = new HashMap();
     Dimension tam;
@@ -79,34 +80,33 @@ public class TableroPanel extends javax.swing.JPanel {
         tam = Toolkit.getDefaultToolkit().getScreenSize();
 //        this.setSize(Frame.jPanel1.getWidth(), Frame.jPanel1.getHeight());
 //        this.setVisible(true);
-        ImageIcon icon = null;
+//        PanelTablero2.setVisible(false); 
+        pintarFichas();
         if (Control.listaIps.size() == 2) {
-            URL url = this.getClass().getResource("/Imagenes/tablero.png");
-            icon = new ImageIcon(url);
+            hub = new Hub(1);
         } else {
-            URL url = this.getClass().getResource("/Imagenes/tablero2.png");
-            icon = new ImageIcon(url);
+            hub = new Hub(2);
         }
-        Hub.setIcon(icon);
-        Hub.setLocation((int) tam.getWidth(), (int) tam.getHeight());
-        Hub.repaint();
+        hub.setLocation((int) (tam.getWidth() / 2) - (hub.getWidth() / 2), (int) (tam.getHeight() / 2) + 230);
+        map.put("Ficha", ficha);
+        PanelTablero.add(hub);
+        PanelTablero.repaint();
         this.repaint();
         t.start();
-        pintarFichas();
 
 //        t2.start();
     }
 
     public void pintarFichas() {
-       
+
 //        PanelTablero2.setVisible(false);
         for (int i = 0; i < 14; i++) {
 //            Control.getJugador().getListaFichas().get(i).setLugar((PanelTablero2.getWidth() / 2) - (Control.getJugador().getListaFichas().get(i).getWidth() / 2), (PanelTablero2.getHeight() / 2) - ( Control.getJugador().getListaFichas().get(i).getWidth() / 2));
 
             if (i != 0) {
-                Control.getJugador().getListaFichas().get(i).setLugar((int) Control.getJugador().getListaFichas().get(i - 1).getLocation().getX() + 45, ((int) tam.getHeight() / 2) + 270);
+                Control.getJugador().getListaFichas().get(i).setLugar((int) Control.getJugador().getListaFichas().get(i - 1).getLocation().getX() + 45, ((int) tam.getHeight() / 2) + 265);
             } else {
-                Control.getJugador().getListaFichas().get(i).setLugar(((int) tam.getWidth() / 2) - 350, ((int) tam.getHeight() / 2) + 270);
+                Control.getJugador().getListaFichas().get(i).setLugar(((int) tam.getWidth() / 2) - 340, ((int) tam.getHeight() / 2) + 265);
             }
             Control.getJugador().getListaFichas().get(i).rotar(90);
             //agrega el objeto en el MAP
@@ -123,7 +123,7 @@ public class TableroPanel extends javax.swing.JPanel {
 
     public void Centrar() {
 
-        PanelTablero2.setSize((int) tam.getWidth() - 190, (int) tam.getHeight() - 190);
+        PanelTablero2.setSize((int) tam.getWidth() - 190, (int) tam.getHeight() - 310);
 //        jPanel1.setBounds((int) tam.getWidth()-500, (int) tam.getHeight()-500, (int) (tam.getWidth() / 2) - (jPanel1.getWidth() / 2), (int) (tam.getHeight() / 2) - (jPanel1.getHeight() / 2));
         PanelTablero2.repaint();
         this.repaint();
@@ -147,7 +147,6 @@ public class TableroPanel extends javax.swing.JPanel {
         PanelTablero2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        Hub = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 0, 102));
 
@@ -191,10 +190,6 @@ public class TableroPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelTablero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(409, 409, 409))
-            .addGroup(PanelTableroLayout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(Hub)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelTableroLayout.setVerticalGroup(
             PanelTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,9 +202,7 @@ public class TableroPanel extends javax.swing.JPanel {
                     .addGroup(PanelTableroLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 306, Short.MAX_VALUE)
-                .addComponent(Hub)
-                .addContainerGap())
+                .addContainerGap(317, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -248,7 +241,9 @@ public class TableroPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+//         TODO add your handling code here:
+//              
+
         ficha = new Ficha(0, 0);
         //coloca al objeto creado en una posicion aleatoria
 //        ficha.setLocation(100, 100);
@@ -266,7 +261,6 @@ public class TableroPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Hub;
     private javax.swing.JPanel PanelTablero;
     public static javax.swing.JPanel PanelTablero2;
     private javax.swing.JButton jButton1;

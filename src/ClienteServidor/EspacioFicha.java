@@ -26,7 +26,7 @@ import javax.swing.JLabel;
  *
  * @author jesus
  */
-public class EspacioFicha extends JLabel implements Serializable {
+public class EspacioFicha extends JLabel {
 
     int grados = 0;
     /**
@@ -55,11 +55,7 @@ public class EspacioFicha extends JLabel implements Serializable {
      * variable que sirve para calcular el movimiento del objeto
      */
     private Point offset;
-    /**
-     * variables auxiliares para el desplazamiento del objeto
-     */
-    private int nuevo_X = 1;
-    private int nuevo_Y = 1;
+ 
 
     int widthColi = 78;
     int heightColi = 40;
