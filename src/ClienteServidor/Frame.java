@@ -23,7 +23,7 @@ public class Frame extends javax.swing.JFrame {
 
 //    public static SocketCliente e;
 //    SocketCliente clienteNuevo;
-    static Control control = new Control();
+    public static Control control = new Control();
     private Map map = new HashMap();
     Ficha ficha;
 
@@ -44,8 +44,9 @@ public class Frame extends javax.swing.JFrame {
         //Crea una nueva instancia de "MiObjeto"
         ficha = new Ficha(0, 0);
         //coloca al objeto creado en una posicion aleatoria
-        ficha.setLocation(100, 100);
-        //agrega el objeto en el MAP
+//        ficha.setLocation(100, 100);
+        ficha.setLugar(100, 100);
+        //agrega el objeto en el MAP    
         map.put("Ficha", ficha);
         //agrega el KEY en el List
 //        listModel.addElement( "Objeto " + this.contador_de_objetos );
@@ -72,6 +73,7 @@ public class Frame extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(6);
@@ -180,15 +182,36 @@ public class Frame extends javax.swing.JFrame {
                         .addGap(153, 153, 153))))
         );
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -217,9 +240,9 @@ public class Frame extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 //        control.crearJugador("Player 1");
-        control.iniciar();
-        System.out.println("Tu turno es: " + control.getJugador().isTurno());
-
+//        control.iniciar();
+//        System.out.println("Tu turno es: " + control.getJugador().isTurno());
+        pintarTablero();
 //        control.crearFichas();
 //        control.crearJugador("Player 1");
 
@@ -284,13 +307,16 @@ public class Frame extends javax.swing.JFrame {
 //    public static void metodoPerron(String ip) {
 //       control.conectarseDeVuelta(ip);
 //    }
-    public static void pintarTablero() {
+    public void pintarTablero() {
         TableroPanel pt = new TableroPanel();
+       
+        pt.setSize(this.getWidth(), this.getHeight());
+        
         jPanel1.removeAll();
         jPanel1.add(pt);
-        jPanel1.revalidate();
+        jPanel1.revalidate(); 
         jPanel1.repaint();
-
+//        pt.Centrar();
     }
 
 
@@ -302,5 +328,6 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     public static javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

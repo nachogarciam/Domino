@@ -262,4 +262,9 @@ public class Control {
         jugador.setTurno(false);
         Frame.btnMensaje.setEnabled(false);
     }
+    
+    public ArrayList<Ficha> getListaTablero(){
+        tablero=new Tablero();
+        return tablero.getListaTablero();
+    }
 }

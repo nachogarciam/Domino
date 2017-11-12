@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -40,11 +41,13 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     /**
      * Posicion de imagen
      */
-    private Point posicion = new Point(0, 0);
+    int x=0;
+    int y=0;
+    private Point posicion = new Point(x, y);
     /**
      * Tamaño de imagen
      */
-    private Dimension d = new Dimension(80, 80);
+    private Dimension d = new Dimension(78, 78);
     /**
      * variable que sirve para calcular el movimiento del objeto
      */
@@ -128,14 +131,17 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        x=(this.getLocation().x);
+        y=(this.getLocation().y);
         nuevo_X = (this.getLocation().x);
         nuevo_Y = (this.getLocation().y);
         this.setLocation(nuevo_X, nuevo_Y);
+        
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        this.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 1));
+//        this.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 1));
 
     }
 
@@ -151,6 +157,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         offset = new Point((int) current.getX() - (int) start_drag.getX(), (int) current.getY() - (int) start_drag.getY());
         Point new_location = new Point((int) (this.start_loc.getX() + offset.getX()), (int) (this.start_loc.getY() + offset.getY()));
         this.setLocation(new_location);
+        this.x=(int)offset.getX();
+        this.y=(int)offset.getY();
     }
 
     @Override
@@ -165,7 +173,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     }
 
     public void rotar(int grados) {
-        this.grados=grados;
+        this.grados = grados;
         repaint();
     }
 
@@ -178,5 +186,14 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
         super.paintComponent(g);
 
+    }
+     public void setLugar(int x, int y){
+        this.x=x;
+        this.y=y;
+        setLocation(x,y);
+    }
+
+    public Rectangle getBounds() {
+        return new Rectangle(x, y,78,78);
     }
 }
