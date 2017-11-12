@@ -82,14 +82,15 @@ public class TableroPanel extends javax.swing.JPanel {
         ImageIcon icon = null;
         if (Control.listaIps.size() == 2) {
             URL url = this.getClass().getResource("/Imagenes/tablero.png");
-             icon = new ImageIcon(url);
-        }else{
-             URL url = this.getClass().getResource("/Imagenes/tablero2.png");
-             icon = new ImageIcon(url);
+            icon = new ImageIcon(url);
+        } else {
+            URL url = this.getClass().getResource("/Imagenes/tablero2.png");
+            icon = new ImageIcon(url);
         }
         Hub.setIcon(icon);
-        Hub.setLocation((int)tam.getWidth(),(int)tam.getHeight());
-        
+        Hub.setLocation((int) tam.getWidth(), (int) tam.getHeight());
+        Hub.repaint();
+        this.repaint();
         t.start();
         pintarFichas();
 
@@ -97,9 +98,8 @@ public class TableroPanel extends javax.swing.JPanel {
     }
 
     public void pintarFichas() {
-        Hub.repaint();
-        this.repaint();
-        PanelTablero2.setVisible(false);
+       
+//        PanelTablero2.setVisible(false);
         for (int i = 0; i < 14; i++) {
 //            Control.getJugador().getListaFichas().get(i).setLugar((PanelTablero2.getWidth() / 2) - (Control.getJugador().getListaFichas().get(i).getWidth() / 2), (PanelTablero2.getHeight() / 2) - ( Control.getJugador().getListaFichas().get(i).getWidth() / 2));
 
@@ -145,9 +145,9 @@ public class TableroPanel extends javax.swing.JPanel {
 
         PanelTablero = new javax.swing.JPanel();
         PanelTablero2 = new javax.swing.JPanel();
-        Hub = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        Hub = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 0, 102));
 
