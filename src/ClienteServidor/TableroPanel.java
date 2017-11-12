@@ -11,6 +11,7 @@ import Juego.Ficha;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -23,51 +24,36 @@ import javax.swing.ImageIcon;
  */
 public class TableroPanel extends javax.swing.JPanel {
 
-    EspacioFicha e;
+   public static EspacioFicha e;
     Hub hub;
     Ficha ficha;
     public static Map map = new HashMap();
     Dimension tam;
+    
+    public static ArrayList<EspacioFicha> listaEspacios=new ArrayList<EspacioFicha>();
+    
     Thread t = new Thread() {
         public void run() {
             int i = 0;
-            while (true) {
-                Centrar();
-                if (e != null && ficha != null && e.collision(ficha)) {
-                    System.out.println("Chocó we");
-                    System.out.println(i);
-                    i++;
-                    ficha.setLocation(e.getLocation());
-                    ficha.rotar(90);
-                }
-            }
+//            while (true) {
+//             
+//                if (e != null && ficha != null && e.collision(ficha)) {
+//                    System.out.println("Chocó we");
+//                    System.out.println(i);
+//                    i++;
+//                    ficha.setLocation(e.getLocation());
+//                    ficha.rotar(90);
+//                }else{
+////                    System.out.println("kpex");
+//                }
+//            }
 
         }
     };
 
     Thread t2 = new Thread() {
         public void run() {
-            while (true) {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(TableroPanel.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                if (control.getListaTablero().size() == 0) {
-                    EspacioFicha e = new EspacioFicha();
-//                    e.setLocation(100, 100);
-
-                    //agrega el objeto en el MAP
-                    map.put("Ficha", e);
-                    //agrega el KEY en el List
-//        listModel.addElement( "Objeto " + this.contador_de_objetos );
-                    //agrega el objeto en el JPanel
-                    PanelTablero2.add(e);
-                    //actualiza graficos
-                    PanelTablero2.repaint();
-                    System.out.println("qwe");
-                }
-            }
+          
 
         }
     };
@@ -121,18 +107,7 @@ public class TableroPanel extends javax.swing.JPanel {
 
     }
 
-    public void Centrar() {
-
-        PanelTablero2.setSize((int) tam.getWidth() - 190, (int) tam.getHeight() - 310);
-//        jPanel1.setBounds((int) tam.getWidth()-500, (int) tam.getHeight()-500, (int) (tam.getWidth() / 2) - (jPanel1.getWidth() / 2), (int) (tam.getHeight() / 2) - (jPanel1.getHeight() / 2));
-        PanelTablero2.repaint();
-        this.repaint();
-        PanelTablero2.setLocation((int) (tam.getWidth() / 2) - (PanelTablero2.getWidth() / 2), (int) (tam.getHeight() / 2) - (PanelTablero2.getHeight() / 2));
-        PanelTablero2.repaint();
-        this.repaint();
-
-//        this.repaint();
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -144,24 +119,12 @@ public class TableroPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         PanelTablero = new javax.swing.JPanel();
-        PanelTablero2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 0, 102));
 
         PanelTablero.setBackground(new java.awt.Color(108, 122, 137));
-
-        javax.swing.GroupLayout PanelTablero2Layout = new javax.swing.GroupLayout(PanelTablero2);
-        PanelTablero2.setLayout(PanelTablero2Layout);
-        PanelTablero2Layout.setHorizontalGroup(
-            PanelTablero2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 329, Short.MAX_VALUE)
-        );
-        PanelTablero2Layout.setVerticalGroup(
-            PanelTablero2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -187,22 +150,15 @@ public class TableroPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTableroLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelTablero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(409, 409, 409))
+                .addGap(744, 744, 744))
         );
         PanelTableroLayout.setVerticalGroup(
             PanelTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTableroLayout.createSequentialGroup()
                 .addComponent(jButton1)
-                .addGroup(PanelTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelTableroLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(PanelTablero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelTableroLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jButton2)))
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(jButton2)
+                .addContainerGap(435, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -222,15 +178,15 @@ public class TableroPanel extends javax.swing.JPanel {
         e = new EspacioFicha();
         //coloca al objeto creado en una posicion aleatoria
 //        e.setLocation((jPanel1.getWidth()/2)-(e.getWidth()/2), (jPanel1.getHeight()/2)-(e.getWidth()/2));
-        e.setLugar((PanelTablero2.getWidth() / 2) - (e.getWidth() / 2), (PanelTablero2.getHeight() / 2) - (e.getWidth() / 2));
+        e.setLugar((PanelTablero.getWidth() / 2) - (e.getWidth() / 2), (PanelTablero.getHeight() / 2) - (e.getWidth() / 2));
         //agrega el objeto en el MAP
         map.put("Ficha", e);
         //agrega el KEY en el List
 //        listModel.addElement( "Objeto " + this.contador_de_objetos );
         //agrega el objeto en el JPanel
-        PanelTablero2.add(e);
+        PanelTablero.add(e);
         //actualiza graficos
-        PanelTablero2.repaint();
+        PanelTablero.repaint();
         System.out.println("qwe");
 
         if (control.getListaTablero().size() == 0) {
@@ -238,6 +194,7 @@ public class TableroPanel extends javax.swing.JPanel {
             e.repaint();
             this.repaint();
         }
+        listaEspacios.add(e);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -253,16 +210,15 @@ public class TableroPanel extends javax.swing.JPanel {
         //agrega el KEY en el List
 //        listModel.addElement( "Objeto " + this.contador_de_objetos );
         //agrega el objeto en el JPanel
-        this.PanelTablero2.add(ficha);
+        this.PanelTablero.add(ficha);
         //actualiza graficos
-        this.PanelTablero2.repaint();
+        this.PanelTablero.repaint();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelTablero;
-    public static javax.swing.JPanel PanelTablero2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables

@@ -29,6 +29,7 @@ import javax.swing.JLabel;
 public class EspacioFicha extends JLabel {
 
     int grados = 0;
+    boolean ocupada=false;
     /**
      * Identificador de objeto
      */
@@ -73,6 +74,15 @@ public class EspacioFicha extends JLabel {
 
     }
 
+    public boolean isOcupada() {
+        return ocupada;
+    }
+
+    public void setOcupada(boolean ocupada) {
+        this.ocupada = ocupada;
+    }
+
+    
     public void rotar(int grados) {
         this.grados = grados;
         widthColi = 40;

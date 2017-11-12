@@ -5,6 +5,8 @@
  */
 package Juego;
 
+import ClienteServidor.EspacioFicha;
+import ClienteServidor.TableroPanel;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -41,8 +43,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     /**
      * Posicion de imagen
      */
-    int x=0;
-    int y=0;
+    int x = 0;
+    int y = 0;
     private Point posicion = new Point(x, y);
     /**
      * Tamaño de imagen
@@ -127,16 +129,29 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     public void mousePressed(MouseEvent e) {
         this.start_drag = getScreenLocation(e);
         this.start_loc = this.getLocation();
+//        System.out.println("Pressed");
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        x=(this.getLocation().x);
-        y=(this.getLocation().y);
+        x = (this.getLocation().x);
+        y = (this.getLocation().y);
         nuevo_X = (this.getLocation().x);
         nuevo_Y = (this.getLocation().y);
         this.setLocation(nuevo_X, nuevo_Y);
-        
+        for (int i = 0; i < TableroPanel.listaEspacios.size(); i++) {
+            if (collision(TableroPanel.e)) {
+                if (TableroPanel.listaEspacios.get(i).isOcupada()) {
+
+                } else {
+                    System.out.println("Colision");
+                    TableroPanel.listaEspacios.get(i).setOcupada(true);
+                    this.setLocation(TableroPanel.listaEspacios.get(i).getLocation());
+                    this.rotar(90);
+                }
+            }
+        }
+
     }
 
     @Override
@@ -157,8 +172,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         offset = new Point((int) current.getX() - (int) start_drag.getX(), (int) current.getY() - (int) start_drag.getY());
         Point new_location = new Point((int) (this.start_loc.getX() + offset.getX()), (int) (this.start_loc.getY() + offset.getY()));
         this.setLocation(new_location);
-        this.x=(int)offset.getX();
-        this.y=(int)offset.getY();
+        this.x = (int) offset.getX();
+        this.y = (int) offset.getY();
     }
 
     @Override
@@ -182,18 +197,24 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
         Graphics2D gx = (Graphics2D) g;
 
-        gx.rotate(r, getWidth() / 2, getHeight() / 2); 
+        gx.rotate(r, getWidth() / 2, getHeight() / 2);
 
         super.paintComponent(g);
 
     }
-     public void setLugar(int x, int y){
-        this.x=x;
-        this.y=y;
-        setLocation(x,y);
+
+    public void setLugar(int x, int y) {
+        this.x = x;
+        this.y = y;
+        setLocation(x, y);
+    }
+
+    public boolean collision(EspacioFicha f) {
+        return f.getBounds().intersects(getBounds());
+
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(x, y,78,78);
+        return new Rectangle(x, y, 78, 78);
     }
 }
