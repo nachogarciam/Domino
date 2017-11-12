@@ -182,7 +182,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
         Graphics2D gx = (Graphics2D) g;
 
-        gx.rotate(r, getWidth() / 2, getHeight() / 2); //Rotate 0.2 radians around the center of the label
+        gx.rotate(r, getWidth() / 2, getHeight() / 2); 
 
         super.paintComponent(g);
 

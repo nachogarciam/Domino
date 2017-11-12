@@ -22,7 +22,7 @@ public class TableroPanel extends javax.swing.JPanel {
 
     EspacioFicha e;
     Ficha ficha;
-    private Map map = new HashMap();
+    public static Map map = new HashMap();
     Dimension tam;
     Thread t = new Thread() {
         public void run() {
@@ -77,6 +77,10 @@ public class TableroPanel extends javax.swing.JPanel {
 //        this.setVisible(true);
         t.start();
 //        t2.start();
+    }
+
+    public void pintarFichas() {
+
     }
 
     public void Centrar() {

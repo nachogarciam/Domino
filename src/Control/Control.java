@@ -7,7 +7,9 @@ package Control;
 
 import ClienteServidor.Conex;
 import ClienteServidor.Frame;
+import static ClienteServidor.Frame.jPanel1;
 import ClienteServidor.SocketCliente;
+import ClienteServidor.TableroPanel;
 import Juego.Ficha;
 import Juego.Jugador;
 import Juego.Movimiento;
@@ -156,7 +158,7 @@ public class Control {
             sc2.enviarMensaje(tablero);
         }
         tablero.getListaTablero().clear();
-//        Frame.pintarTablero();
+        pintarTablero();
         iniciarJuego();
     }
 
@@ -266,5 +268,17 @@ public class Control {
     public ArrayList<Ficha> getListaTablero(){
         tablero=new Tablero();
         return tablero.getListaTablero();
+    }
+    
+     public static void pintarTablero() {
+        TableroPanel pt = new TableroPanel();
+       
+        pt.setSize(jPanel1.getWidth(), jPanel1.getHeight());
+        
+        jPanel1.removeAll();
+        jPanel1.add(pt);
+        jPanel1.revalidate(); 
+        jPanel1.repaint();
+//        pt.Centrar();
     }
 }

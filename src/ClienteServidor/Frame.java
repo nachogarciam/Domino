@@ -220,11 +220,11 @@ public class Frame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 //        String nombre = JOptionPane.showInputDialog("¿Cuál es tu nombre?");
-//        String ip = JOptionPane.showInputDialog("¿Cual es la ip?");
+        String ip = JOptionPane.showInputDialog("¿Cual es la ip?");
 //
-//        control.conectarse(ip);
-//        control.agregarIpLista(ip);
-        Nuevo_Objeto();
+        control.conectarse(ip);
+        control.agregarIpLista(ip);
+//        Nuevo_Objeto();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMensajeActionPerformed
@@ -242,6 +242,7 @@ public class Frame extends javax.swing.JFrame {
 //        control.crearJugador("Player 1");
         control.iniciar();
         System.out.println("Tu turno es: " + control.getJugador().isTurno());
+    
 //        pintarTablero();
 //        control.crearFichas();
 //        control.crearJugador("Player 1");
@@ -307,18 +308,17 @@ public class Frame extends javax.swing.JFrame {
 //    public static void metodoPerron(String ip) {
 //       control.conectarseDeVuelta(ip);
 //    }
-    public void pintarTablero() {
-        TableroPanel pt = new TableroPanel();
-       
-        pt.setSize(this.getWidth(), this.getHeight());
-        
-        jPanel1.removeAll();
-        jPanel1.add(pt);
-        jPanel1.revalidate(); 
-        jPanel1.repaint();
-//        pt.Centrar();
-    }
-
+//    public static void pintarTablero() {
+//        TableroPanel pt = new TableroPanel();
+//       
+//        pt.setSize(this.getWidth(), this.getHeight());
+//        
+//        jPanel1.removeAll();
+//        jPanel1.add(pt);
+//        jPanel1.revalidate(); 
+//        jPanel1.repaint();
+////        pt.Centrar();
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnMensaje;
