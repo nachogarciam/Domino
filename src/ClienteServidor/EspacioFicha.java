@@ -87,12 +87,28 @@ public class EspacioFicha extends JLabel {
         this.ocupada = ocupada;
     }
 
+    public int getLadoDispA() {
+        return ladoDispA;
+    }
+
+    public void setLadoDispA(int ladoDispA) {
+        this.ladoDispA = ladoDispA;
+    }
+
+    public int getLadoDispB() {
+        return ladoDispB;
+    }
+
+    public void setLadoDispB(int ladoDispB) {
+        this.ladoDispB = ladoDispB;
+    }
+
     public void rotar(int grados) {
         this.grados = grados;
         widthColi = 40;
         heightColi = 78;
-        this.x = x + (this.getWidth() / 2);
-        this.y = y - (this.getHeight() / 4);
+//        this.x = x + (this.getWidth() / 2);
+//        this.y = y - (this.getHeight() / 4);
         this.orientacion = "Vertical";
         this.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 1));
         this.repaint();
@@ -125,7 +141,9 @@ public class EspacioFicha extends JLabel {
 
     public void setLugar(int x, int y) {
         this.x = x;
-        this.y = y+((this.getHeight()/2)-20);
+        this.y = y;
+//        this.y =y-((this.getHeight()/2)-20);
+
         setLocation(x, y);
     }
 
@@ -143,14 +161,10 @@ public class EspacioFicha extends JLabel {
     }
 
     public Rectangle getBounds() {
-//        System.out.println("x: " + x + "   y: " + y);
-//        System.out.println("W: " + widthColi + "   H: " + heightColi);
-
-//        System.out.println(this.getLocation());
-        Rectangle r = new Rectangle(x, y, widthColi, heightColi);
-//        System.out.println("Centro rectangulo: " + r.getCenterX());
-//        r.setLocation(x, y);
-//        System.out.println("Centro Ficha: "+this.);
-        return r;
+        if (this.orientacion.equalsIgnoreCase("Horizontal")) {
+            return new Rectangle(x, y - ((this.getHeight() / 2) - 20), widthColi, heightColi);
+        } else {
+            return new Rectangle(x + ((this.getWidth() / 2) - 39), y, widthColi, heightColi);
+        }
     }
 }

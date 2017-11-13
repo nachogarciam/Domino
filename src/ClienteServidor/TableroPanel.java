@@ -209,22 +209,20 @@ public class TableroPanel extends javax.swing.JPanel {
 //        e.acomodar();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-
     public void crearSombra() {
 
         if (Control.getTablero().getListaTablero().size() == 0) {
-            e = new EspacioFicha(5, 5);
-            e.setLugar((PanelTablero.getWidth() / 2) - (e.getWidth() / 2), (PanelTablero.getHeight() / 2) - (e.getWidth() / 2));
-            map.put("Ficha", e);
-            PanelTablero.add(e);
+            listaEspacios.add(new EspacioFicha(5, 5));
+//            e = new EspacioFicha(5, 5);
+            listaEspacios.get(0).setLugar((PanelTablero.getWidth() / 2) - (listaEspacios.get(0).getWidth() / 2), (PanelTablero.getHeight() / 2) - (listaEspacios.get(0).getWidth() / 2));
+            map.put("Ficha", listaEspacios.get(0));
+            PanelTablero.add(listaEspacios.get(0));
             PanelTablero.repaint();
 
-            if (control.getListaTablero().size() == 0) {
-//            e.rotar(90);
-                e.repaint();
-                this.repaint();
-            }
-            listaEspacios.add(e);
+            listaEspacios.get(0).rotar(90);
+            listaEspacios.get(0).repaint();
+            this.repaint();
+
         }
 
     }

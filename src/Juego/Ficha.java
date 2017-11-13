@@ -7,6 +7,7 @@ package Juego;
 
 import ClienteServidor.EspacioFicha;
 import ClienteServidor.TableroPanel;
+import static ClienteServidor.TableroPanel.listaEspacios;
 import Control.Control;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -146,27 +147,32 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         nuevo_X = (this.getLocation().x);
         nuevo_Y = (this.getLocation().y);
         this.setLocation(nuevo_X, nuevo_Y);
+        
         for (int i = 0; i < TableroPanel.listaEspacios.size(); i++) {
-            if (collision(TableroPanel.e)) {
+            if (collision(TableroPanel.listaEspacios.get(i))) {
                 if (TableroPanel.listaEspacios.get(i).isOcupada()) {
 
                 } else {
+                    if(TableroPanel.listaEspacios.get(i).getLadoDispA()==this.getLadoA()||TableroPanel.listaEspacios.get(i).getLadoDispA()==this.getLadoB()){
+                        
+                    }else if(TableroPanel.listaEspacios.get(i).getLadoDispB()==this.getLadoA()||TableroPanel.listaEspacios.get(i).getLadoDispA()==this.getLadoB()){
+                        
+                    }
                     System.out.println("Colision");
-//                    TableroPanel.listaEspacios.get(i).setOcupada(true);
-                    this.setLocation(TableroPanel.listaEspacios.get(i).getLocation());
+//                    TableroPdanel.listaEspacios.get(i).setOcupada(true);
+                    this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
                     if (TableroPanel.listaEspacios.get(i).getOrientacion().equalsIgnoreCase("Vertical")) {
+                        this.rotar(90);
                     } else {
                         this.rotar(180);
                     }
                 }
             }
         }
-        
-        if(collision(Control.getTablero().getListaTablero().get(0))){
+
+        if (collision(Control.getJugador().getListaFichas().get(0))) {
             System.out.println("Colision carnal");
         }
-        
-        
 
     }
 
@@ -206,6 +212,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     public void rotar(int grados) {
         this.widthColi = 40;
         this.heightColi = 78;
+        this.orientacion="Vertical";
 //        this.x = x + (this.getWidth() / 4);
 //        this.y = y - (this.getHeight() / 4);
         this.grados = grados;
@@ -236,7 +243,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         return f.getBounds().intersects(getBounds());
 
     }
-     public boolean collision(Ficha f) {
+
+    public boolean collision(Ficha f) {
         return f.getBounds().intersects(getBounds());
 
     }
@@ -245,7 +253,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         if (this.orientacion.equalsIgnoreCase("Horizontal")) {
             return new Rectangle(x, y - ((this.getHeight() / 2) - 20), widthColi, heightColi);
         } else {
-            return new Rectangle(x, y, widthColi, heightColi);
+            return new Rectangle(x+((this.getWidth()/2)-39), y, widthColi, heightColi);
         }
 
     }
