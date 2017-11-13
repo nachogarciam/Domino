@@ -38,6 +38,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     boolean estadoA = false;
     boolean estadoB = false;
     boolean mula = false;
+    boolean ponida= false;
 
     int grados = 0;
     /**
@@ -141,6 +142,14 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         this.mula = mula;
     }
 
+    public boolean isPonida() {
+        return ponida;
+    }
+
+    public void setPonida(boolean ponida) {
+        this.ponida = ponida;
+    }
+
     @Override
     public String toString() {
         return "Ficha{" + "ladoA=" + ladoA + ", ladoB=" + ladoB + '}';
@@ -180,6 +189,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                     TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(0))));
                     Control.getTablero().getListaTablero().add(this);
                     Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
+                    this.setPonida(true);
                     yano=1;
                 } else {
                     JOptionPane.showMessageDialog(null, "Debes inicar con la mula de 5");
@@ -189,13 +199,14 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         }
 
         for (int i = 0; i < TableroPanel.listaEspacios.size(); i++) {
-            if (collision(TableroPanel.listaEspacios.get(i))) {
+            if(!this.isPonida()){
+               if (collision(TableroPanel.listaEspacios.get(i))) {
 
                 if (TableroPanel.listaEspacios.get(i).isOcupada()) {
 
                 } else {
                     //ESTE PARA LA MULA DE 5 (CON LA QUE DEBES DE INICIAR)
-
+                    
                     if (!TableroPanel.listaEspacios.get(i).isOcupadoA()) {
                         if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoA()) {
                             this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
@@ -223,7 +234,11 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                     }
 
                 }
+            } 
+            }else{
+                    System.out.println("no se puede puto");
             }
+            
 //            if (this.getLocation() != TableroPanel.listaEspacios.get(i).getLocation()) {
 //                this.setLugar(this.x2, this.y2);
 //            }
