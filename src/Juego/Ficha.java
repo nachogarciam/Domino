@@ -225,7 +225,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                                 Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
                                 this.setPonida(true);
                                 TableroPanel.listaEspacios.get(i).setOcupadoB(true);
-                                rotar(TableroPanel.listaEspacios.get(i));
+                                rotar(TableroPanel.listaEspacios.get(i),"A");
                                 System.out.println("qqweqw");
                             } else if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoB()) {
                                 this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
@@ -233,7 +233,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                                 Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
                                 this.setPonida(true);
                                 TableroPanel.listaEspacios.get(i).setOcupadoB(true);
-                                rotar(TableroPanel.listaEspacios.get(i));
+                                rotar(TableroPanel.listaEspacios.get(i),"B");
                                 System.out.println("qweqwe");
                             }
                         }
@@ -317,16 +317,24 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         repaint();
     }
 
-    public void rotar(EspacioFicha ef) {
+    public void rotar(EspacioFicha ef, String disponible) {
+        System.out.println(ef.getOrientacion());
+        System.out.println(this.getOrientacion());
         if (ef.getOrientacion().equalsIgnoreCase("Vertical")) {
             if (this.getOrientacion().equalsIgnoreCase("Horizontal")) {
                 this.rotar(90);
             }
         } else {
             if (this.getOrientacion().equalsIgnoreCase("Vertical")) {
+     
                 if (ef.getLadoDisponible().equalsIgnoreCase("A")) {
-                    System.out.println("Holapinsheputita");
-                    this.rotar(-90);
+                    if(disponible.equalsIgnoreCase("A")){
+                         this.rotar(180);
+                    }else if(disponible.equalsIgnoreCase("B")){
+                        this.rotar(-180);
+                    }
+//                    System.out.println("Holapinsheputita");
+                   
                 }
 
             }
