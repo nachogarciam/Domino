@@ -24,7 +24,7 @@ import java.util.Collections;
 public class Control {
 
     static ArrayList<Ficha> listaFichas = new ArrayList<Ficha>();
-    static ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
+    public static ArrayList<Jugador> listaJugadores = new ArrayList<Jugador>();
     public static ArrayList<String> listaIps = new ArrayList<String>();
     static Jugador jugador;
     static Conex c;
@@ -188,8 +188,12 @@ public class Control {
         }
     }
 
-    public void enviarMensaje(Object obj) {
-
+    public static void enviarMovimiento(Object mov) {
+        if (sc2 == null) {
+            sc.enviarMensaje(mov);
+        } else {
+            sc2.enviarMensaje(mov);
+        }
     }
 
     public static void obtenerDatos(Tablero tablero2) {
@@ -283,4 +287,11 @@ public class Control {
 //        pt.Centrar();
     }
 
+    public static void pintarRecibido(Movimiento m){
+       
+        
+        TableroPanel.PanelTablero.add(m.getListaFichas().get(0));
+        TableroPanel.PanelTablero.repaint();
+        
+    }
 }

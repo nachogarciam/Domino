@@ -303,7 +303,7 @@ public class Frame extends javax.swing.JFrame {
     }
 
     public static void iniciar(Object obj) {
-        control.enviarMensaje(obj);
+        control.enviarMovimiento(obj);
     }
 
 //    public static void metodoPerron(String ip) {

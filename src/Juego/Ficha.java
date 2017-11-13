@@ -48,6 +48,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
      */
     int x = 0;
     int y = 0;
+    //posicion original
     int x2 = 0;
     int y2 = 0;
     private Point posicion = new Point(x, y);
@@ -149,15 +150,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         nuevo_Y = (this.getLocation().y);
         this.setLocation(nuevo_X, nuevo_Y);
 
-//        if (collision(TableroPanel.listaEspacios.get(0))) {
-//            if (!TableroPanel.listaEspacios.get(0).isOcupada()) {
-//                if (this.getLadoA() == 5 && this.getLadoB() == 5) {
-//
-//                }
-//            }
-//        }
         for (int i = 0; i < TableroPanel.listaEspacios.size(); i++) {
-            if (collision(TableroPanel.listaEspacios.get(0))) {
+            if (collision(TableroPanel.listaEspacios.get(i))) {
 
                 if (TableroPanel.listaEspacios.get(i).isOcupada()) {
 
@@ -167,7 +161,9 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                     if (TableroPanel.listaEspacios.get(0).getLadoDispA() == 5 && TableroPanel.listaEspacios.get(0).getLadoDispB() == 5) {
                         if (this.getLadoA() == 5 && this.getLadoB() == 5) {
                             this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
-                        }else{
+                            Control.getTablero().getListaTablero().add(this);
+                            Control.enviarMovimiento(new Movimiento(Control.getJugador(),Control.getTablero().getListaTablero()));
+                        } else {
                             JOptionPane.showMessageDialog(null, "Debes inicar con la mula de 5");
                         }
 
@@ -187,22 +183,26 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                         }
                     }
 
-                    System.out.println("Colision");
+//                    System.out.println("Colision");
 //                    TableroPdanel.listaEspacios.get(i).setOcupada(true);
-                    this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
+//                    this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
                     if (TableroPanel.listaEspacios.get(i).getOrientacion().equalsIgnoreCase("Vertical")) {
                         this.rotar(90);
                     } else {
                         this.rotar(180);
                     }
+
                 }
             }
+            if (this.getLocation() != TableroPanel.listaEspacios.get(i).getLocation()) {
+                this.setLugar(this.x2, this.y2);
+            }
+
         }
 
-        if (collision(Control.getJugador().getListaFichas().get(0))) {
-            System.out.println("Colision carnal");
-        }
-
+//        if (collision(Control.getJugador().getListaFichas().get(0))) {
+//            System.out.println("Colision carnal");
+//        }
     }
 
     @Override
@@ -263,6 +263,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     public void setLugar(int x, int y) {
         this.x = x;
         this.y = y;
+        this.x2 = x;
+        this.y2 = y;
 //        this.y = y + ((this.getHeight() / 2) - 20);
         setLocation(x, y);
 

@@ -62,7 +62,9 @@ public class Conex {
                                 } else if (o.getClass().toString().equals("class Juego.Movimiento")) {
 //                                    System.out.println("qweqw");
                                     Movimiento m = (Movimiento) o;
-
+                                    Control.pintarRecibido(m);
+//                                    Control.getTablero().getListaTablero().add(m.getListaFichas().get(0));
+                                    
                                     System.out.println(m.getJugador().isTurno());
                                     if (m.getJugador().isTurno()) {
 //                                        System.out.println("qweqw");
