@@ -7,6 +7,7 @@ package Juego;
 
 import ClienteServidor.EspacioFicha;
 import ClienteServidor.TableroPanel;
+import Control.Control;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -160,6 +161,12 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                 }
             }
         }
+        
+        if(collision(Control.getTablero().getListaTablero().get(0))){
+            System.out.println("Colision carnal");
+        }
+        
+        
 
     }
 
@@ -219,7 +226,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
     public void setLugar(int x, int y) {
         this.x = x;
-        this.y = y + ((this.getHeight() / 2) - 20);
+        this.y = y;
+//        this.y = y + ((this.getHeight() / 2) - 20);
         setLocation(x, y);
 
     }
@@ -228,10 +236,14 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         return f.getBounds().intersects(getBounds());
 
     }
+     public boolean collision(Ficha f) {
+        return f.getBounds().intersects(getBounds());
+
+    }
 
     public Rectangle getBounds() {
         if (this.orientacion.equalsIgnoreCase("Horizontal")) {
-            return new Rectangle(x, y + ((this.getHeight() / 2) - 20), widthColi, heightColi);
+            return new Rectangle(x, y - ((this.getHeight() / 2) - 20), widthColi, heightColi);
         } else {
             return new Rectangle(x, y, widthColi, heightColi);
         }
