@@ -24,14 +24,14 @@ import javax.swing.ImageIcon;
  */
 public class TableroPanel extends javax.swing.JPanel {
 
-   public static EspacioFicha e;
+    public static EspacioFicha e;
     Hub hub;
     Ficha ficha;
     public static Map map = new HashMap();
     Dimension tam;
-    
-    public static ArrayList<EspacioFicha> listaEspacios=new ArrayList<EspacioFicha>();
-    
+
+    public static ArrayList<EspacioFicha> listaEspacios = new ArrayList<EspacioFicha>();
+
     Thread t = new Thread() {
         public void run() {
             int i = 0;
@@ -53,7 +53,6 @@ public class TableroPanel extends javax.swing.JPanel {
 
     Thread t2 = new Thread() {
         public void run() {
-          
 
         }
     };
@@ -65,7 +64,7 @@ public class TableroPanel extends javax.swing.JPanel {
         initComponents();
         tam = Toolkit.getDefaultToolkit().getScreenSize();
 
-//        pintarFichas();
+        pintarFichas();
         if (Control.listaIps.size() == 2) {
             hub = new Hub(1);
         } else {
@@ -103,8 +102,6 @@ public class TableroPanel extends javax.swing.JPanel {
         }
 
     }
-
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -184,26 +181,7 @@ public class TableroPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        e = new EspacioFicha();
-        //coloca al objeto creado en una posicion aleatoria
-//        e.setLocation((jPanel1.getWidth()/2)-(e.getWidth()/2), (jPanel1.getHeight()/2)-(e.getWidth()/2));
-        e.setLugar((PanelTablero.getWidth() / 2) - (e.getWidth() / 2), (PanelTablero.getHeight() / 2) - (e.getWidth() / 2));
-        //agrega el objeto en el MAP
-        map.put("Ficha", e);
-        //agrega el KEY en el List
-//        listModel.addElement( "Objeto " + this.contador_de_objetos );
-        //agrega el objeto en el JPanel
-        PanelTablero.add(e);
-        //actualiza graficos
-        PanelTablero.repaint();
-        System.out.println("qwe");
-
-        if (control.getListaTablero().size() == 0) {
-//            e.rotar(90);
-            e.repaint();
-            this.repaint();
-        }
-        listaEspacios.add(e);   
+        crearSombra();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -231,6 +209,25 @@ public class TableroPanel extends javax.swing.JPanel {
 //        e.acomodar();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+
+    public void crearSombra() {
+
+        if (Control.getTablero().getListaTablero().size() == 0) {
+            e = new EspacioFicha(5, 5);
+            e.setLugar((PanelTablero.getWidth() / 2) - (e.getWidth() / 2), (PanelTablero.getHeight() / 2) - (e.getWidth() / 2));
+            map.put("Ficha", e);
+            PanelTablero.add(e);
+            PanelTablero.repaint();
+
+            if (control.getListaTablero().size() == 0) {
+//            e.rotar(90);
+                e.repaint();
+                this.repaint();
+            }
+            listaEspacios.add(e);
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelTablero;

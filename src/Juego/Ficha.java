@@ -70,6 +70,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
     int widthColi = 78;
     int heightColi = 40;
+
     public Ficha(int ladoA, int ladoB) {
         this.ladoA = ladoA;
         this.ladoB = ladoB;
@@ -149,7 +150,10 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                     System.out.println("Colision");
 //                    TableroPanel.listaEspacios.get(i).setOcupada(true);
                     this.setLocation(TableroPanel.listaEspacios.get(i).getLocation());
-                    this.rotar(90);
+                    if (TableroPanel.listaEspacios.get(i).getOrientacion().equalsIgnoreCase("Vertical")) {
+                    } else {
+                        this.rotar(180);
+                    }
                 }
             }
         }
@@ -190,11 +194,12 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     }
 
     public void rotar(int grados) {
-        this.widthColi=40;
-        this.heightColi=78;
-        this.x = x + (this.getWidth() / 4);
-        this.y = y - (this.getHeight() / 4);
+        this.widthColi = 40;
+        this.heightColi = 78;
+//        this.x = x + (this.getWidth() / 4);
+//        this.y = y - (this.getHeight() / 4);
         this.grados = grados;
+
         repaint();
     }
 
@@ -204,14 +209,14 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         Graphics2D gx = (Graphics2D) g;
 
         gx.rotate(r, getWidth() / 2, getHeight() / 2);
-
+        this.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 1));
         super.paintComponent(g);
 
     }
 
     public void setLugar(int x, int y) {
         this.x = x;
-        this.y = y;
+        this.y = y+((this.getHeight()/2)-20);
         setLocation(x, y);
 
     }
@@ -222,6 +227,6 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(x,y, widthColi, heightColi);
+        return new Rectangle(x, y, widthColi, heightColi);
     }
 }

@@ -60,8 +60,14 @@ public class EspacioFicha extends JLabel {
     int widthColi = 78;
     int heightColi = 40;
 
-    public EspacioFicha() {
+    int ladoDispA;
+    int ladoDispB;
 
+    String orientacion = "Horizontal";
+
+    public EspacioFicha(int ladoA, int ladoB) {
+        this.ladoDispA = ladoA;
+        this.ladoDispB = ladoB;
         this.setToolTipText("Ficha");
         this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.setSize(d);
@@ -85,8 +91,9 @@ public class EspacioFicha extends JLabel {
         this.grados = grados;
         widthColi = 40;
         heightColi = 78;
-        this.x = x + (this.getWidth() / 4);
+        this.x = x + (this.getWidth() / 2);
         this.y = y - (this.getHeight() / 4);
+        this.orientacion = "Vertical";
         this.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 1));
         this.repaint();
 //     
@@ -110,14 +117,24 @@ public class EspacioFicha extends JLabel {
         gx.rotate(r, getWidth() / 2, getHeight() / 2); //Rotate 0.2 radians around the center of the label
 
 //        gx.drawRect(x, y, widthColi, heightColi);
+//        g.drawRect(x, y, widthColi, heightColi);
+//        g.setColor(Color.GREEN);
         super.paintComponent(g);
 
     }
 
     public void setLugar(int x, int y) {
         this.x = x;
-        this.y = y;
+        this.y = y+((this.getHeight()/2)-20);
         setLocation(x, y);
+    }
+
+    public String getOrientacion() {
+        return orientacion;
+    }
+
+    public void setOrientacion(String orientacion) {
+        this.orientacion = orientacion;
     }
 
     public boolean collision(Ficha f) {
