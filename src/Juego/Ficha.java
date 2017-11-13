@@ -400,7 +400,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         Graphics2D gx = (Graphics2D) g;
 
         gx.rotate(r, getWidth() / 2, getHeight() / 2);
-        this.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 1));
+//        this.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 1));
         super.paintComponent(g);
 
     }
