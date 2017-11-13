@@ -269,7 +269,6 @@ public class Control {
 //        jugador.setTurno(false);
 //        Frame.btnMensaje.setEnabled(false);
 //    }
-
     public ArrayList<Ficha> getListaTablero() {
         tablero = new Tablero();
         return tablero.getListaTablero();
@@ -287,9 +286,16 @@ public class Control {
 //        pt.Centrar();
     }
 
-    public static void pintarRecibido(Movimiento m){
-        TableroPanel.PanelTablero.add(m.getListaFichas().get(0));
-        TableroPanel.PanelTablero.repaint();
-        
+    public static void pintarRecibido(Movimiento m) {
+        if (m.getListaFichas().size() == 1) {
+//           
+            TableroPanel.PanelTablero.add(m.getListaFichas().get(0));
+
+        } else { 
+//            int index = m.getListaFichas().get;
+            TableroPanel.PanelTablero.add(m.getListaFichas().get(m.getListaFichas().size()-1));
+            TableroPanel.PanelTablero.repaint();
+        }
+
     }
 }
