@@ -54,7 +54,7 @@ public class TableroPanel extends javax.swing.JPanel {
     Thread t2 = new Thread() {
         public void run() {
             while (true) {
-                metodoPerron();
+//                metodoPerron();
             }
         }
     };
@@ -195,7 +195,7 @@ public class TableroPanel extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 //         TODO add your handling code here:
 //              
-        metodoPerron();
+//        metodoPerron();
 
 //        ficha = new Ficha(0, 0);
 //        //coloca al objeto creado en una posicion aleatoria
@@ -252,14 +252,14 @@ public class TableroPanel extends javax.swing.JPanel {
 
     }
 
-    public static void metodoPerron() {
-        int n=listaEspacios.size();
-        for (int i = 0; i < n; i++) {
-            if (listaEspacios.get(i).isOcupada()) {
+    public static void metodoPerron(EspacioFicha ef) {
+//        int n=listaEspacios.size();
+//        for (int i = 0; i < n; i++) {
+            if (ef.isOcupada()) {
 //                System.out.println(i);
-                crearEspacio(listaEspacios.get(i));
+                crearEspacio(ef);
             }
-        }
+//        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JPanel PanelTablero;

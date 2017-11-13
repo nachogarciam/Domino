@@ -182,7 +182,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                         if (this.getLadoA() == 5 && this.getLadoB() == 5) {
                             this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
                             TableroPanel.listaEspacios.get(i).setOcupada(true);
-                            TableroPanel.metodoPerron();
+                            TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(i))));
                             Control.getTablero().getListaTablero().add(this);
                             Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
 
