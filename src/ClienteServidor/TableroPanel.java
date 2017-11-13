@@ -74,6 +74,7 @@ public class TableroPanel extends javax.swing.JPanel {
         map.put("Hub", hub);
         PanelTablero.add(hub);
         PanelTablero.repaint();
+        crearEspacio(new EspacioFicha(5, 5));
         this.repaint();
         t.start();
 
@@ -185,7 +186,7 @@ public class TableroPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        crearSombra();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -213,10 +214,10 @@ public class TableroPanel extends javax.swing.JPanel {
 //        e.acomodar();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    public void crearSombra() {
+    public void crearEspacio(EspacioFicha ef) {
 
         if (Control.getTablero().getListaTablero().size() == 0) {
-            listaEspacios.add(new EspacioFicha(5, 5));
+            listaEspacios.add(ef);
             listaEspacios.get(0).setLugar((PanelTablero.getWidth() / 2) - (listaEspacios.get(0).getWidth() / 2), (PanelTablero.getHeight() / 2) - (listaEspacios.get(0).getWidth() / 2));
             map.put("Ficha", listaEspacios.get(0));
             PanelTablero.add(listaEspacios.get(0));
@@ -226,10 +227,34 @@ public class TableroPanel extends javax.swing.JPanel {
             listaEspacios.get(0).repaint();
             this.repaint();
 
+        } else {
+
+            if (ef.isMula()) {
+                if (!ef.isOcupadoA()) {
+                    EspacioFicha e = new EspacioFicha(ef.getLadoDispA(), "A");
+                    listaEspacios.add(e);
+                    listaEspacios.get(listaEspacios.indexOf(e)).setLugar(listaEspacios.get(listaEspacios.indexOf(ef)).getX() - e.getWidth(), listaEspacios.get(listaEspacios.indexOf(ef)).getY());
+                    map.put("Ficha", listaEspacios.get(listaEspacios.indexOf(e)));
+                    PanelTablero.add(listaEspacios.get(listaEspacios.indexOf(e)));
+                    PanelTablero.repaint();
+                    listaEspacios.get(listaEspacios.indexOf(e)).repaint();
+                    this.repaint();
+                }
+                if (!ef.isOcupadoB()) {
+
+                }
+            }
         }
 
     }
 
+    public void metodoPerron() {
+        for (int i = 0; i < listaEspacios.size(); i++) {
+            if (listaEspacios.get(i).isOcupada()) {
+                crearEspacio(listaEspacios.get(i));
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JPanel PanelTablero;
     private javax.swing.JButton jButton1;

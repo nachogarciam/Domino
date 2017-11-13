@@ -37,6 +37,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     //si es true, es que ya está ocupado ese lado
     boolean estadoA = false;
     boolean estadoB = false;
+    boolean mula = false;
+    
 
     int grados = 0;
     /**
@@ -92,7 +94,11 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         //se agregan los listener
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
-    }
+        if(ladoA==ladoB){
+            mula=true;
+        }
+        
+        }
 
     public int getLadoA() {
         return ladoA;
@@ -126,6 +132,15 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         this.estadoB = estadoB;
     }
 
+    public boolean isMula() {
+        return mula;
+    }
+
+    public void setMula(boolean mula) {
+        this.mula = mula;
+    }
+
+    
     @Override
     public String toString() {
         return "Ficha{" + "ladoA=" + ladoA + ", ladoB=" + ladoB + '}';
@@ -226,12 +241,15 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        Point current = this.getScreenLocation(e);
-        offset = new Point((int) current.getX() - (int) start_drag.getX(), (int) current.getY() - (int) start_drag.getY());
-        Point new_location = new Point((int) (this.start_loc.getX() + offset.getX()), (int) (this.start_loc.getY() + offset.getY()));
-        this.setLocation(new_location);
-        this.x = (int) offset.getX();
-        this.y = (int) offset.getY();
+          if(Control.getJugador().isTurno()){
+              Point current = this.getScreenLocation(e);
+              offset = new Point((int) current.getX() - (int) start_drag.getX(), (int) current.getY() - (int) start_drag.getY());
+              Point new_location = new Point((int) (this.start_loc.getX() + offset.getX()), (int) (this.start_loc.getY() + offset.getY()));
+              this.setLocation(new_location);
+              this.x = (int) offset.getX();
+              this.y = (int) offset.getY();
+          }
+        
     }
 
     @Override

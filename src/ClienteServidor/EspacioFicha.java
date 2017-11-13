@@ -30,6 +30,7 @@ public class EspacioFicha extends JLabel {
 
     int grados = 0;
     boolean ocupada = false;
+    boolean mula = false;
     /**
      * Identificador de objeto
      */
@@ -62,15 +63,34 @@ public class EspacioFicha extends JLabel {
 
     int ladoDispA;
     int ladoDispB;
-    
-    boolean ocupadoA=false;
-    boolean ocupadoB=false;
+
+    boolean ocupadoA = false;
+    boolean ocupadoB = false;
 
     String orientacion = "Horizontal";
 
     public EspacioFicha(int ladoA, int ladoB) {
         this.ladoDispA = ladoA;
         this.ladoDispB = ladoB;
+        this.setToolTipText("Ficha");
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        this.setSize(d);
+        this.setPreferredSize(d);
+        this.setIcon(new ImageIcon(getClass().getResource("/Imagenes/Fichas/FichaSombra.png")));
+        this.setText("");
+        this.setVisible(true);
+        this.setLocation(posicion);
+        if (ladoA == ladoB) {
+            this.mula = true;
+        }
+    }
+
+    public EspacioFicha(int num, String lado) {
+        if (lado.equalsIgnoreCase("A")) {
+            this.ladoDispA = num;
+        } else {
+            this.ladoDispB = num;
+        }
         this.setToolTipText("Ficha");
         this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.setSize(d);
@@ -120,6 +140,14 @@ public class EspacioFicha extends JLabel {
 
     public void setOcupadoB(boolean ocupadoB) {
         this.ocupadoB = ocupadoB;
+    }
+
+    public boolean isMula() {
+        return mula;
+    }
+
+    public void setMula(boolean mula) {
+        this.mula = mula;
     }
 
     public void rotar(int grados) {
