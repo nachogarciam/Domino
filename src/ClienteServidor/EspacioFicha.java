@@ -172,13 +172,6 @@ public class EspacioFicha extends JLabel {
 
     }
 
-    public void acomodar() {
-        d.setSize(40, 78);
-        this.setSize(d);
-        this.setPreferredSize(d);
-        this.setLugar(x, y);
-        this.repaint();
-    }
 
     public void paintComponent(Graphics g) {
         double r = Math.toRadians(grados); //se convierte a radianes lo grados

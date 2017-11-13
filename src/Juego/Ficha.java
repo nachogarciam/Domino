@@ -324,7 +324,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
             }
         } else {
             if (this.getOrientacion().equalsIgnoreCase("Vertical")) {
-                if (ef.getLadoDisponible().equalsIgnoreCase("B")) {
+                if (ef.getLadoDisponible().equalsIgnoreCase("A")) {
+                    System.out.println("Holapinsheputita");
                     this.rotar(-90);
                 }
 
