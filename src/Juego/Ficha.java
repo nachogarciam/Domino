@@ -45,8 +45,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
      */
     int x = 0;
     int y = 0;
-    int x2=0;
-    int y2=0;
+    int x2 = 0;
+    int y2 = 0;
     private Point posicion = new Point(x, y);
     /**
      * Tamaño de imagen
@@ -72,6 +72,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
     int widthColi = 78;
     int heightColi = 40;
+    String orientacion = "Horizontal";
 
     public Ficha(int ladoA, int ladoB) {
         this.ladoA = ladoA;
@@ -217,8 +218,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     }
 
     public void setLugar(int x, int y) {
-        this.x2 = x;
-        this.y2 = y+((this.getHeight()/2)-20);
+        this.x = x;
+        this.y = y + ((this.getHeight() / 2) - 20);
         setLocation(x, y);
 
     }
@@ -229,7 +230,11 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     }
 
     public Rectangle getBounds() {
-        
-        return new Rectangle(x2, y2, widthColi, heightColi);
+        if (this.orientacion.equalsIgnoreCase("Horizontal")) {
+            return new Rectangle(x, y + ((this.getHeight() / 2) - 20), widthColi, heightColi);
+        } else {
+            return new Rectangle(x, y, widthColi, heightColi);
+        }
+
     }
 }

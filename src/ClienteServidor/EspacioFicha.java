@@ -143,12 +143,12 @@ public class EspacioFicha extends JLabel {
     }
 
     public Rectangle getBounds() {
-        System.out.println("x: " + x + "   y: " + y);
-        System.out.println("W: " + widthColi + "   H: " + heightColi);
+//        System.out.println("x: " + x + "   y: " + y);
+//        System.out.println("W: " + widthColi + "   H: " + heightColi);
 
-        System.out.println(this.getLocation());
+//        System.out.println(this.getLocation());
         Rectangle r = new Rectangle(x, y, widthColi, heightColi);
-        System.out.println("Centro rectangulo: " + r.getCenterX());
+//        System.out.println("Centro rectangulo: " + r.getCenterX());
 //        r.setLocation(x, y);
 //        System.out.println("Centro Ficha: "+this.);
         return r;
