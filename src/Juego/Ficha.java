@@ -218,34 +218,52 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                     } else {
                         System.out.println("Eaa");
                         System.out.println(i);
-//                        if()
-                        if (TableroPanel.listaEspacios.get(i).isOcupadoA()) {
-                            if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoA()) {
-                                this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
-                                TableroPanel.listaEspacios.get(i).setOcupada(true);
-                                TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(i))));
-                                this.setPonida(true);
-                                TableroPanel.listaEspacios.get(i).setOcupadoB(true);
-                                rotar(TableroPanel.listaEspacios.get(i), "A");
-                                Control.getTablero().getListaTablero().add(this);
-                                Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
+                        if (TableroPanel.listaEspacios.get(i).getWidth() < (TableroPanel.tam.getWidth() / 2)) {
+                            if (!TableroPanel.listaEspacios.get(i).isOcupadoA()) {
+                                if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoA()) {
+                                    this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
+                                    TableroPanel.listaEspacios.get(i).setOcupada(true);
+                                    TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(i))));
+                                    this.setPonida(true);
+                                    TableroPanel.listaEspacios.get(i).setOcupadoB(true);
+                                    rotar(TableroPanel.listaEspacios.get(i), "A");
+                                    Control.getTablero().getListaTablero().add(this);
+                                    Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
 
-                            } else if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoB()) {
-                                this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
-                                TableroPanel.listaEspacios.get(i).setOcupadoB(true);
-                                TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(i))));
-                                this.setPonida(true);
-                                rotar(TableroPanel.listaEspacios.get(i), "B");
-                                Control.getTablero().getListaTablero().add(this);
-                                Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
+                                } else if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoB()) {
+                                    this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
+                                    TableroPanel.listaEspacios.get(i).setOcupadoB(true);
+                                    TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(i))));
+                                    this.setPonida(true);
+                                    TableroPanel.listaEspacios.get(i).setOcupadoA(true);
+                                    rotar(TableroPanel.listaEspacios.get(i), "B");
+                                    Control.getTablero().getListaTablero().add(this);
+                                    Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
 
+                                }
                             }
-                        }
-                        if (!TableroPanel.listaEspacios.get(i).isOcupadoB()) {
-                            if (TableroPanel.listaEspacios.get(i).getLadoDispB() == this.getLadoA()) {
+                        } else {
+                            if (!TableroPanel.listaEspacios.get(i).isOcupadoB()) {
+                                if (TableroPanel.listaEspacios.get(i).getLadoDispB() == this.getLadoA()) {
+                                    this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
+                                    TableroPanel.listaEspacios.get(i).setOcupada(true);
+                                    TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(i))));
+                                    this.setPonida(true);
+                                    TableroPanel.listaEspacios.get(i).setOcupadoB(true);
+                                    rotar(TableroPanel.listaEspacios.get(i), "A");
+                                    Control.getTablero().getListaTablero().add(this);
+                                    Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
+                                } else if (TableroPanel.listaEspacios.get(i).getLadoDispB() == this.getLadoB()) {
+                                    this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
+                                    TableroPanel.listaEspacios.get(i).setOcupadoB(true);
+                                    TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(i))));
+                                    this.setPonida(true);
+                                    TableroPanel.listaEspacios.get(i).setOcupadoA(true);
+                                    rotar(TableroPanel.listaEspacios.get(i), "B");
+                                    Control.getTablero().getListaTablero().add(this);
+                                    Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
 
-                            } else if (TableroPanel.listaEspacios.get(i).getLadoDispB() == this.getLadoB()) {
-
+                                }
                             }
                         }
 
@@ -258,9 +276,9 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 //                            this.rotar(90);
 //                        }
                     }
-                    if (this.getLocation() != TableroPanel.listaEspacios.get(i).getLocation()) {
-                        this.setLugar(this.x2, this.y2);
-                    }
+//                    if (this.getLocation() != TableroPanel.listaEspacios.get(i).getLocation()) {
+//                        this.setLugar(this.x2, this.y2);
+//                    }
                 }
             } else {
                 System.out.println("no se puede puto");
