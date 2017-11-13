@@ -216,25 +216,23 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
                     } else {
                         //ESTE PARA LA MULA DE 5 (CON LA QUE DEBES DE INICIAR)
-                        
+
                         if (!TableroPanel.listaEspacios.get(i).isOcupadoA()) {
                             if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoA()) {
                                 this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
                                 TableroPanel.listaEspacios.get(i).setOcupada(true);
-                                Control.getTablero().getListaTablero().add(this);
-                                Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
                                 this.setPonida(true);
                                 TableroPanel.listaEspacios.get(i).setOcupadoB(true);
-                                rotar(TableroPanel.listaEspacios.get(i),"A");
-                                System.out.println("qqweqw");
+                                rotar(TableroPanel.listaEspacios.get(i), "A");
+                                Control.getTablero().getListaTablero().add(this);
+                                Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
                             } else if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoB()) {
                                 this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
-                                Control.getTablero().getListaTablero().add(this);
-                                Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
                                 this.setPonida(true);
                                 TableroPanel.listaEspacios.get(i).setOcupadoB(true);
-                                rotar(TableroPanel.listaEspacios.get(i),"B");
-                                System.out.println("qweqwe");
+                                rotar(TableroPanel.listaEspacios.get(i), "B");
+                                Control.getTablero().getListaTablero().add(this);
+                                Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
                             }
                         }
                         if (!TableroPanel.listaEspacios.get(i).isOcupadoB()) {
@@ -253,7 +251,6 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 //                        } else {
 //                            this.rotar(90);
 //                        }
-
                     }
                 }
             } else {
@@ -284,17 +281,16 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        if(!this.isPonida()){
-                if (Control.getJugador().isTurno()) {
-                    Point current = this.getScreenLocation(e);
-                    offset = new Point((int) current.getX() - (int) start_drag.getX(), (int) current.getY() - (int) start_drag.getY());
-                    Point new_location = new Point((int) (this.start_loc.getX() + offset.getX()), (int) (this.start_loc.getY() + offset.getY()));
-                    this.setLocation(new_location);
-                    this.x = (int) offset.getX();
-                    this.y = (int) offset.getY();
-                }
+        if (!this.isPonida()) {
+            if (Control.getJugador().isTurno()) {
+                Point current = this.getScreenLocation(e);
+                offset = new Point((int) current.getX() - (int) start_drag.getX(), (int) current.getY() - (int) start_drag.getY());
+                Point new_location = new Point((int) (this.start_loc.getX() + offset.getX()), (int) (this.start_loc.getY() + offset.getY()));
+                this.setLocation(new_location);
+                this.x = (int) offset.getX();
+                this.y = (int) offset.getY();
+            }
         }
-       
 
     }
 
@@ -329,15 +325,15 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
             }
         } else {
             if (this.getOrientacion().equalsIgnoreCase("Vertical")) {
-     
+
                 if (ef.getLadoDisponible().equalsIgnoreCase("A")) {
-                    if(disponible.equalsIgnoreCase("A")){
-                         this.rotar(180);
-                    }else if(disponible.equalsIgnoreCase("B")){
+                    if (disponible.equalsIgnoreCase("A")) {
+                        this.rotar(180);
+                    } else if (disponible.equalsIgnoreCase("B")) {
                         this.rotar(360);
                     }
 //                    System.out.println("Holapinsheputita");
-                   
+
                 }
 
             }
