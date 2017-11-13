@@ -27,7 +27,7 @@ public class Jugador implements Serializable{
 
     public void tieneMula(){
         for (Ficha listaFicha : listaFichas) {
-            if(listaFicha.getLadoA()==6&&listaFicha.getLadoB()==6){
+            if(listaFicha.getLadoA()==5&&listaFicha.getLadoB()==5){
                 turno=true;
             }
         }
