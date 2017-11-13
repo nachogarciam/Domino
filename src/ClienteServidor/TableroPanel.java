@@ -100,6 +100,7 @@ public class TableroPanel extends javax.swing.JPanel {
 
             if (!Control.getJugador().isTurno()) {
                 Control.getJugador().getListaFichas().get(i).setEnabled(false);
+                Control.getJugador().getListaFichas().get(i).setFocusable(false);
             }
             //actualiza graficos
             PanelTablero.repaint();
