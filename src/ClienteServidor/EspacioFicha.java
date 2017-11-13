@@ -149,6 +149,14 @@ public class EspacioFicha extends JLabel {
     public void setMula(boolean mula) {
         this.mula = mula;
     }
+    public String getLadoDisponible(){
+        if(this.ocupadoA){
+           return "B"; 
+        }else if(this.ocupadoB){
+            return "A";
+        }
+        return "";
+    }
 
     public void rotar(int grados) {
         this.grados = grados;

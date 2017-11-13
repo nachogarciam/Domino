@@ -38,7 +38,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     boolean estadoA = false;
     boolean estadoB = false;
     boolean mula = false;
-    boolean ponida= false;
+    boolean ponida = false;
 
     int grados = 0;
     /**
@@ -150,6 +150,14 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         this.ponida = ponida;
     }
 
+    public String getOrientacion() {
+        return orientacion;
+    }
+
+    public void setOrientacion(String orientacion) {
+        this.orientacion = orientacion;
+    }
+
     @Override
     public String toString() {
         return "Ficha{" + "ladoA=" + ladoA + ", ladoB=" + ladoB + '}';
@@ -189,8 +197,10 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                     TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(0))));
                     Control.getTablero().getListaTablero().add(this);
                     Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
+                    TableroPanel.listaEspacios.get(0).setOcupadoA(true);
+                    TableroPanel.listaEspacios.get(0).setOcupadoB(true);
                     this.setPonida(true);
-                    yano=1;
+                    yano = 1;
                 } else {
                     JOptionPane.showMessageDialog(null, "Debes inicar con la mula de 5");
                 }
@@ -199,50 +209,55 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         }
 
         for (int i = 0; i < TableroPanel.listaEspacios.size(); i++) {
-            if(!this.isPonida()){
-               if (collision(TableroPanel.listaEspacios.get(i))) {
+            if (!this.isPonida()) {
+                if (collision(TableroPanel.listaEspacios.get(i))) {
 
-                if (TableroPanel.listaEspacios.get(i).isOcupada()) {
+                    if (TableroPanel.listaEspacios.get(i).isOcupada()) {
 
-                } else {
-                    //ESTE PARA LA MULA DE 5 (CON LA QUE DEBES DE INICIAR)
-                    
-                    if (!TableroPanel.listaEspacios.get(i).isOcupadoA()) {
-                        if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoA()) {
-                            this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
-                            System.out.println("qqweqw");
-                        } else if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoB()) {
-                            this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
-                            System.out.println("qweqwe");
+                    } else {
+                        //ESTE PARA LA MULA DE 5 (CON LA QUE DEBES DE INICIAR)
+
+                        if (!TableroPanel.listaEspacios.get(i).isOcupadoA()) {
+                            if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoA()) {
+                                this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
+                                TableroPanel.listaEspacios.get(i).setOcupada(true);
+                                Control.getTablero().getListaTablero().add(this);
+                                Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
+                                this.setPonida(true);
+                                TableroPanel.listaEspacios.get(i).setOcupadoB(true);
+                                rotar(TableroPanel.listaEspacios.get(i));
+                                System.out.println("qqweqw");
+                            } else if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoB()) {
+                                this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
+                                System.out.println("qweqwe");
+                            }
                         }
-                    }
-                    if (!TableroPanel.listaEspacios.get(i).isOcupadoB()) {
-                        if (TableroPanel.listaEspacios.get(i).getLadoDispB() == this.getLadoA()) {
+                        if (!TableroPanel.listaEspacios.get(i).isOcupadoB()) {
+                            if (TableroPanel.listaEspacios.get(i).getLadoDispB() == this.getLadoA()) {
 
-                        } else if (TableroPanel.listaEspacios.get(i).getLadoDispB() == this.getLadoB()) {
+                            } else if (TableroPanel.listaEspacios.get(i).getLadoDispB() == this.getLadoB()) {
 
+                            }
                         }
-                    }
 
 //                    System.out.println("Colision");
 //                    TableroPdanel.listaEspacios.get(i).setOcupada(true);
 //                    this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
-                    if (TableroPanel.listaEspacios.get(i).getOrientacion().equalsIgnoreCase("Vertical")) {
+                        if (TableroPanel.listaEspacios.get(i).getOrientacion().equalsIgnoreCase("Vertical")) {
 //                        this.rotar(90);
-                    } else {
-                        this.rotar(90);
-                    }
+                        } else {
+                            this.rotar(90);
+                        }
 
+                    }
                 }
-            } 
-            }else{
-                    System.out.println("no se puede puto");
+            } else {
+                System.out.println("no se puede puto");
             }
-            
+
 //            if (this.getLocation() != TableroPanel.listaEspacios.get(i).getLocation()) {
 //                this.setLugar(this.x2, this.y2);
 //            }
-
         }
 
 //        if (collision(Control.getJugador().getListaFichas().get(0))) {
@@ -295,6 +310,22 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         this.grados = grados;
 
         repaint();
+    }
+
+    public void rotar(EspacioFicha ef) {
+        if (ef.getOrientacion().equalsIgnoreCase("Vertical")) {
+            if (this.getOrientacion().equalsIgnoreCase("Horizontal")) {
+                this.rotar(90);
+            }
+        } else {
+            if (this.getOrientacion().equalsIgnoreCase("Vertical")) {
+                if(ef.getLadoDisponible().equalsIgnoreCase("B")){
+                    this.rotar(-90);
+                }
+                
+            }
+
+        }
     }
 
     public void paintComponent(Graphics g) {
