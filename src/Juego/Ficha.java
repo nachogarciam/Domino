@@ -229,6 +229,11 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                                 System.out.println("qqweqw");
                             } else if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoB()) {
                                 this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
+                                Control.getTablero().getListaTablero().add(this);
+                                Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
+                                this.setPonida(true);
+                                TableroPanel.listaEspacios.get(i).setOcupadoB(true);
+                                rotar(TableroPanel.listaEspacios.get(i));
                                 System.out.println("qweqwe");
                             }
                         }
@@ -319,10 +324,10 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
             }
         } else {
             if (this.getOrientacion().equalsIgnoreCase("Vertical")) {
-                if(ef.getLadoDisponible().equalsIgnoreCase("B")){
+                if (ef.getLadoDisponible().equalsIgnoreCase("B")) {
                     this.rotar(-90);
                 }
-                
+
             }
 
         }
