@@ -38,7 +38,6 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     boolean estadoA = false;
     boolean estadoB = false;
     boolean mula = false;
-    
 
     int grados = 0;
     /**
@@ -94,11 +93,11 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         //se agregan los listener
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
-        if(ladoA==ladoB){
-            mula=true;
+        if (ladoA == ladoB) {
+            mula = true;
         }
-        
-        }
+
+    }
 
     public int getLadoA() {
         return ladoA;
@@ -140,7 +139,6 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         this.mula = mula;
     }
 
-    
     @Override
     public String toString() {
         return "Ficha{" + "ladoA=" + ladoA + ", ladoB=" + ladoB + '}';
@@ -148,19 +146,19 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        if(Control.getJugador().isTurno()){
-             this.start_drag = getScreenLocation(e);
-        this.start_loc = this.getLocation();
-        }else{
+        if (Control.getJugador().isTurno()) {
+            this.start_drag = getScreenLocation(e);
+            this.start_loc = this.getLocation();
+        } else {
             System.out.println("No es tu turno");
             this.setLugar(x2, y2);
         }
-       
+
 //        System.out.println("Pressed");
     }
 
@@ -183,10 +181,11 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                     if (TableroPanel.listaEspacios.get(0).getLadoDispA() == 5 && TableroPanel.listaEspacios.get(0).getLadoDispB() == 5) {
                         if (this.getLadoA() == 5 && this.getLadoB() == 5) {
                             this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
-                            Control.getTablero().getListaTablero().add(this);
-                            Control.enviarMovimiento(new Movimiento(Control.getJugador(),Control.getTablero().getListaTablero()));
                             TableroPanel.listaEspacios.get(i).setOcupada(true);
                             TableroPanel.metodoPerron();
+                            Control.getTablero().getListaTablero().add(this);
+                            Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
+
                         } else {
                             JOptionPane.showMessageDialog(null, "Debes inicar con la mula de 5");
                         }
@@ -243,15 +242,15 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
     @Override
     public void mouseDragged(MouseEvent e) {
-          if(Control.getJugador().isTurno()){
-              Point current = this.getScreenLocation(e);
-              offset = new Point((int) current.getX() - (int) start_drag.getX(), (int) current.getY() - (int) start_drag.getY());
-              Point new_location = new Point((int) (this.start_loc.getX() + offset.getX()), (int) (this.start_loc.getY() + offset.getY()));
-              this.setLocation(new_location);
-              this.x = (int) offset.getX();
-              this.y = (int) offset.getY();
-          }
-        
+        if (Control.getJugador().isTurno()) {
+            Point current = this.getScreenLocation(e);
+            offset = new Point((int) current.getX() - (int) start_drag.getX(), (int) current.getY() - (int) start_drag.getY());
+            Point new_location = new Point((int) (this.start_loc.getX() + offset.getX()), (int) (this.start_loc.getY() + offset.getY()));
+            this.setLocation(new_location);
+            this.x = (int) offset.getX();
+            this.y = (int) offset.getY();
+        }
+
     }
 
     @Override
