@@ -31,7 +31,7 @@ public class Control {
     static SocketCliente sc;
     public static SocketCliente sc2;
     static Tablero tablero;
-    static String miIp = "192.168.0.19";
+    static String miIp = "192.168.0.100";
 
     public void iniciarServidor() {
         Thread t1 = new Thread() {
@@ -168,17 +168,21 @@ public class Control {
                 while (true) {
                     if (jugador.isTurno()) {
                         //aqui algo para desbloquear las fichas
-                       
+                        for (int i = 0; i < jugador.getListaFichas().size(); i++) {
+                            jugador.getListaFichas().get(i).setEnabled(true);
 
-                    } else {
+                        }
+                        }else {
                         
                     }
+                    }
                 }
+
             }
 
-        };
-        t.start();
-    }
+            ;
+            t.start ();
+        }
 
     public void enviarMensaje() {
         if (sc2 == null) {
@@ -194,6 +198,7 @@ public class Control {
         } else {
             sc2.enviarMensaje(mov);
         }
+        jugador.setTurno(false);
     }
 
     public static void obtenerDatos(Tablero tablero2) {
