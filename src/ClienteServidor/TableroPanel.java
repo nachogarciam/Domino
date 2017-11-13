@@ -97,14 +97,16 @@ public class TableroPanel extends javax.swing.JPanel {
 //        listModel.addElement( "Objeto " + this.contador_de_objetos );
             //agrega el objeto en el JPanel
             PanelTablero.add(Control.getJugador().getListaFichas().get(i));
+
+            if (!Control.getJugador().isTurno()) {
+                Control.getJugador().getListaFichas().get(i).setEnabled(false);
+            }
             //actualiza graficos
             PanelTablero.repaint();
         }
 
     }
 
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
