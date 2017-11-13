@@ -287,14 +287,15 @@ public class Control {
     }
 
     public static void pintarRecibido(Movimiento m) {
+        System.out.println(m.getListaFichas().size());
         if (m.getListaFichas().size() == 1) {
 //           
             TableroPanel.PanelTablero.add(m.getListaFichas().get(0));
-
-        } else { 
-//            int index = m.getListaFichas().get;
-            TableroPanel.PanelTablero.add(m.getListaFichas().get(m.getListaFichas().size()-1));
             TableroPanel.PanelTablero.repaint();
+
+        } else {
+//            int index = m.getListaFichas().get;
+            TableroPanel.PanelTablero.add(m.getListaFichas().get(m.getListaFichas().size() - 1));
         }
 
     }
