@@ -254,21 +254,21 @@ public class Control {
         Control.miIp = miIp;
     }
 
-    public void moverPieza() {
-        //Pruebas
-        tablero.getListaTablero().add(jugador.getListaFichas().get(0));
-        jugador.getListaFichas().remove(0);
+//    public void moverPieza() {
+//        //Pruebas
+//        tablero.getListaTablero().add(jugador.getListaFichas().get(0));
+//        jugador.getListaFichas().remove(0);
+////        jugador.setTurno(false);
+//        Movimiento m = new Movimiento(jugador, tablero.getListaTablero().get);
+//
+//        if (sc2 == null) {
+//            sc.enviarMensaje(m);
+//        } else {
+//            sc2.enviarMensaje(m);
+//        }
 //        jugador.setTurno(false);
-        Movimiento m = new Movimiento(jugador, tablero.getListaTablero());
-
-        if (sc2 == null) {
-            sc.enviarMensaje(m);
-        } else {
-            sc2.enviarMensaje(m);
-        }
-        jugador.setTurno(false);
-        Frame.btnMensaje.setEnabled(false);
-    }
+//        Frame.btnMensaje.setEnabled(false);
+//    }
 
     public ArrayList<Ficha> getListaTablero() {
         tablero = new Tablero();
@@ -288,7 +288,7 @@ public class Control {
     }
 
     public static void pintarRecibido(Movimiento m){
-        TableroPanel.PanelTablero.add(m.getListaFichas().get(0));
+        TableroPanel.PanelTablero.add(m.getFicha());
         TableroPanel.PanelTablero.repaint();
         
     }

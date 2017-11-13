@@ -242,7 +242,6 @@ public class TableroPanel extends javax.swing.JPanel {
                     PanelTablero.add(listaEspacios.get(listaEspacios.indexOf(e)));
                     PanelTablero.repaint();
                     listaEspacios.get(listaEspacios.indexOf(e)).repaint();
-//                    this.repaint();
                 }
                 if (!ef.isOcupadoB()) {
                     EspacioFicha e = new EspacioFicha(ef.getLadoDispA(), "B");
