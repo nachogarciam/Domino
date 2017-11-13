@@ -24,6 +24,7 @@ import java.io.Serializable;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -147,25 +148,42 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         nuevo_X = (this.getLocation().x);
         nuevo_Y = (this.getLocation().y);
         this.setLocation(nuevo_X, nuevo_Y);
-       
+
+//        if (collision(TableroPanel.listaEspacios.get(0))) {
+//            if (!TableroPanel.listaEspacios.get(0).isOcupada()) {
+//                if (this.getLadoA() == 5 && this.getLadoB() == 5) {
+//
+//                }
+//            }
+//        }
         for (int i = 0; i < TableroPanel.listaEspacios.size(); i++) {
-            if (collision(TableroPanel.listaEspacios.get(i))) {
-                
+            if (collision(TableroPanel.listaEspacios.get(0))) {
+
                 if (TableroPanel.listaEspacios.get(i).isOcupada()) {
 
                 } else {
-                    
-                    if (!TableroPanel.listaEspacios.get(i).isOcupadoA()) {
-                        if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoA()) {
+                    //ESTE PARA LA MULA DE 5 (CON LA QUE DEBES DE INICIAR)
 
-                        } else if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoB()) {
-
+                    if (TableroPanel.listaEspacios.get(0).getLadoDispA() == 5 && TableroPanel.listaEspacios.get(0).getLadoDispB() == 5) {
+                        if (this.getLadoA() == 5 && this.getLadoB() == 5) {
+                            this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Debes inicar con la mula de 5");
                         }
-                    } else if (!TableroPanel.listaEspacios.get(i).isOcupadoB()) {
-                        if (TableroPanel.listaEspacios.get(i).getLadoDispB() == this.getLadoA()) {
 
-                        } else if (TableroPanel.listaEspacios.get(i).getLadoDispB() == this.getLadoB()) {
+                    } else { //este para todas las demás
+                        if (!TableroPanel.listaEspacios.get(i).isOcupadoA()) {
+                            if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoA()) {
 
+                            } else if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoB()) {
+
+                            }
+                        } else if (!TableroPanel.listaEspacios.get(i).isOcupadoB()) {
+                            if (TableroPanel.listaEspacios.get(i).getLadoDispB() == this.getLadoA()) {
+
+                            } else if (TableroPanel.listaEspacios.get(i).getLadoDispB() == this.getLadoB()) {
+
+                            }
                         }
                     }
 
