@@ -45,6 +45,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
      */
     int x = 0;
     int y = 0;
+    int x2=0;
+    int y2=0;
     private Point posicion = new Point(x, y);
     /**
      * Tamaño de imagen
@@ -215,8 +217,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     }
 
     public void setLugar(int x, int y) {
-        this.x = x;
-        this.y = y+((this.getHeight()/2)-20);
+        this.x2 = x;
+        this.y2 = y+((this.getHeight()/2)-20);
         setLocation(x, y);
 
     }
@@ -227,6 +229,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(x, y, widthColi, heightColi);
+        
+        return new Rectangle(x2, y2, widthColi, heightColi);
     }
 }
