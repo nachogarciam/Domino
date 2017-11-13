@@ -256,7 +256,7 @@ public class TableroPanel extends javax.swing.JPanel {
                 if (!ef.isOcupadoA()) {
                     EspacioFicha e = new EspacioFicha(ef.getLadoDispA(), "A");
                     listaEspacios.add(e);
-                    listaEspacios.get(listaEspacios.indexOf(e)).setLugar((listaEspacios.get(listaEspacios.indexOf(ef)).getX() - 78), listaEspacios.get(listaEspacios.indexOf(ef)).getY());
+                    listaEspacios.get(listaEspacios.indexOf(e)).setLugar((listaEspacios.get(listaEspacios.indexOf(ef)).getX() - 190), listaEspacios.get(listaEspacios.indexOf(ef)).getY());
                     map.put("Ficha", listaEspacios.get(listaEspacios.indexOf(e)));
                     PanelTablero.add(listaEspacios.get(listaEspacios.indexOf(e)));
                     PanelTablero.repaint();
