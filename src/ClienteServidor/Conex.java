@@ -65,7 +65,7 @@ public class Conex {
                                     Control.pintarRecibido(m);
 //                                    Control.getTablero().getListaTablero().add(m.getListaFichas().get(0));
                                     
-                                    System.out.println(m.getJugador().isTurno());
+//                                    System.out.println(m.getJugador().isTurno());
                                     if (m.getJugador().isTurno()) {
 //                                        System.out.println("qweqw");
                                         Frame.btnMensaje.setEnabled(true);

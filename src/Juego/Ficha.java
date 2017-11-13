@@ -185,6 +185,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                             this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
                             Control.getTablero().getListaTablero().add(this);
                             Control.enviarMovimiento(new Movimiento(Control.getJugador(),Control.getTablero().getListaTablero()));
+                            TableroPanel.listaEspacios.get(i).setOcupada(true);
+                            TableroPanel.metodoPerron();
                         } else {
                             JOptionPane.showMessageDialog(null, "Debes inicar con la mula de 5");
                         }

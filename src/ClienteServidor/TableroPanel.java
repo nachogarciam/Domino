@@ -28,7 +28,7 @@ public class TableroPanel extends javax.swing.JPanel {
     Hub hub;
     Ficha ficha;
     public static Map map = new HashMap();
-    Dimension tam;
+    public static Dimension tam;
 
     public static ArrayList<EspacioFicha> listaEspacios = new ArrayList<EspacioFicha>();
 
@@ -53,7 +53,9 @@ public class TableroPanel extends javax.swing.JPanel {
 
     Thread t2 = new Thread() {
         public void run() {
-
+            while (true) {
+                metodoPerron();
+            }
         }
     };
 
@@ -185,26 +187,28 @@ public class TableroPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+//         TODO add your handling code here:
+        crearEspacio(new EspacioFicha(5, 5));
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 //         TODO add your handling code here:
 //              
+        metodoPerron();
 
-        ficha = new Ficha(0, 0);
-        //coloca al objeto creado en una posicion aleatoria
-//        ficha.setLocation(100, 100);
-        ficha.setLugar(100, 100);
-        //agrega el objeto en el MAP    
-        map.put("Ficha", ficha);
-        //agrega el KEY en el List
-//        listModel.addElement( "Objeto " + this.contador_de_objetos );
-        //agrega el objeto en el JPanel
-        this.PanelTablero.add(ficha);
-        //actualiza graficos
-        this.PanelTablero.repaint();
+//        ficha = new Ficha(0, 0);
+//        //coloca al objeto creado en una posicion aleatoria
+////        ficha.setLocation(100, 100);
+//        ficha.setLugar(100, 100);
+//        //agrega el objeto en el MAP    
+//        map.put("Ficha", ficha);
+//        //agrega el KEY en el List
+////        listModel.addElement( "Objeto " + this.contador_de_objetos );
+//        //agrega el objeto en el JPanel
+//        this.PanelTablero.add(ficha);
+//        //actualiza graficos
+//        this.PanelTablero.repaint();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -214,18 +218,20 @@ public class TableroPanel extends javax.swing.JPanel {
 //        e.acomodar();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    public void crearEspacio(EspacioFicha ef) {
+    public static void crearEspacio(EspacioFicha ef) {
 
         if (Control.getTablero().getListaTablero().size() == 0) {
+            System.out.println(PanelTablero.getWidth() / 2);
+            System.out.println(PanelTablero.getHeight() / 2);
             listaEspacios.add(ef);
-            listaEspacios.get(0).setLugar((PanelTablero.getWidth() / 2) - (listaEspacios.get(0).getWidth() / 2), (PanelTablero.getHeight() / 2) - (listaEspacios.get(0).getWidth() / 2));
+            listaEspacios.get(0).setLugar((int)(tam.getWidth() / 2) - (listaEspacios.get(0).getWidth() / 2), (int)(tam.getHeight() / 2) - (listaEspacios.get(0).getWidth() / 2));
             map.put("Ficha", listaEspacios.get(0));
             PanelTablero.add(listaEspacios.get(0));
             PanelTablero.repaint();
 
             listaEspacios.get(0).rotar(90);
             listaEspacios.get(0).repaint();
-            this.repaint();
+//            this.repaint();
 
         } else {
 
@@ -233,12 +239,12 @@ public class TableroPanel extends javax.swing.JPanel {
                 if (!ef.isOcupadoA()) {
                     EspacioFicha e = new EspacioFicha(ef.getLadoDispA(), "A");
                     listaEspacios.add(e);
-                    listaEspacios.get(listaEspacios.indexOf(e)).setLugar(listaEspacios.get(listaEspacios.indexOf(ef)).getX() - e.getWidth(), listaEspacios.get(listaEspacios.indexOf(ef)).getY());
+                    listaEspacios.get(listaEspacios.indexOf(e)).setLugar(listaEspacios.get(listaEspacios.indexOf(ef)).getX() - (e.getWidth()/2), listaEspacios.get(listaEspacios.indexOf(ef)).getY());
                     map.put("Ficha", listaEspacios.get(listaEspacios.indexOf(e)));
                     PanelTablero.add(listaEspacios.get(listaEspacios.indexOf(e)));
                     PanelTablero.repaint();
                     listaEspacios.get(listaEspacios.indexOf(e)).repaint();
-                    this.repaint();
+//                    this.repaint();
                 }
                 if (!ef.isOcupadoB()) {
 
@@ -248,9 +254,10 @@ public class TableroPanel extends javax.swing.JPanel {
 
     }
 
-    public void metodoPerron() {
+    public static void metodoPerron() {
         for (int i = 0; i < listaEspacios.size(); i++) {
             if (listaEspacios.get(i).isOcupada()) {
+//                System.out.println(i);
                 crearEspacio(listaEspacios.get(i));
             }
         }
