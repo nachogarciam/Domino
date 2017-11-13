@@ -13,25 +13,19 @@ import java.util.ArrayList;
  * @author Nacho
  */
 public class Movimiento implements Serializable {
-    Ficha ficha;
+    ArrayList<Ficha> listaFichas = new ArrayList<Ficha>();
     Jugador jugador=new Jugador();
     
-    public Movimiento(Jugador jugador,Ficha Ficha){
+    public Movimiento(Jugador jugador,ArrayList<Ficha> listaFichas){
         System.out.println(jugador.getNombre());
         this.jugador.setNombre(jugador.getNombre());
         this.jugador.setTurno(jugador.isTurno());
-        this.ficha=ficha;
+        this.listaFichas.addAll(listaFichas);
     }
 
-    public Ficha getFicha() {
-        return ficha;
+    public ArrayList<Ficha> getListaFichas() {
+        return listaFichas;
     }
-
-    public void setFicha(Ficha ficha) {
-        this.ficha = ficha;
-    }
-
-  
 
     public Jugador getJugador() {
         return jugador;

@@ -288,7 +288,7 @@ public class Control {
     }
 
     public static void pintarRecibido(Movimiento m){
-        TableroPanel.PanelTablero.add(m.getFicha());
+        TableroPanel.PanelTablero.add(m.getListaFichas().get(0));
         TableroPanel.PanelTablero.repaint();
         
     }
