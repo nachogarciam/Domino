@@ -64,17 +64,15 @@ public class TableroPanel extends javax.swing.JPanel {
     public TableroPanel() {
         initComponents();
         tam = Toolkit.getDefaultToolkit().getScreenSize();
-//        this.setSize(Frame.jPanel1.getWidth(), Frame.jPanel1.getHeight());
-//        this.setVisible(true);
-//        PanelTablero2.setVisible(false); 
-        pintarFichas();
+
+//        pintarFichas();
         if (Control.listaIps.size() == 2) {
             hub = new Hub(1);
         } else {
             hub = new Hub(2);
         }
         hub.setLocation((int) (tam.getWidth() / 2) - (hub.getWidth() / 2), (int) (tam.getHeight() / 2) + 230);
-        map.put("Ficha", ficha);
+        map.put("Hub", hub);
         PanelTablero.add(hub);
         PanelTablero.repaint();
         this.repaint();
@@ -84,7 +82,6 @@ public class TableroPanel extends javax.swing.JPanel {
     }
 
     public void pintarFichas() {
-
 //        PanelTablero2.setVisible(false);
         for (int i = 0; i < 14; i++) {
 //            Control.getJugador().getListaFichas().get(i).setLugar((PanelTablero2.getWidth() / 2) - (Control.getJugador().getListaFichas().get(i).getWidth() / 2), (PanelTablero2.getHeight() / 2) - ( Control.getJugador().getListaFichas().get(i).getWidth() / 2));
@@ -121,6 +118,7 @@ public class TableroPanel extends javax.swing.JPanel {
         PanelTablero = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 0, 102));
 
@@ -140,12 +138,21 @@ public class TableroPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setText("Rotar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelTableroLayout = new javax.swing.GroupLayout(PanelTablero);
         PanelTablero.setLayout(PanelTableroLayout);
         PanelTableroLayout.setHorizontalGroup(
             PanelTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTableroLayout.createSequentialGroup()
                 .addComponent(jButton1)
+                .addGap(159, 159, 159)
+                .addComponent(jButton3)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTableroLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -155,7 +162,9 @@ public class TableroPanel extends javax.swing.JPanel {
         PanelTableroLayout.setVerticalGroup(
             PanelTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTableroLayout.createSequentialGroup()
-                .addComponent(jButton1)
+                .addGroup(PanelTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3))
                 .addGap(27, 27, 27)
                 .addComponent(jButton2)
                 .addContainerGap(435, Short.MAX_VALUE))
@@ -190,11 +199,11 @@ public class TableroPanel extends javax.swing.JPanel {
         System.out.println("qwe");
 
         if (control.getListaTablero().size() == 0) {
-            e.rotar(90);
+//            e.rotar(90);
             e.repaint();
             this.repaint();
         }
-        listaEspacios.add(e);
+        listaEspacios.add(e);   
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -216,10 +225,17 @@ public class TableroPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        e.rotar(90);
+//        e.acomodar();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelTablero;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     // End of variables declaration//GEN-END:variables
 }

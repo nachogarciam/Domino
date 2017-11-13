@@ -29,7 +29,7 @@ import javax.swing.JLabel;
 public class EspacioFicha extends JLabel {
 
     int grados = 0;
-    boolean ocupada=false;
+    boolean ocupada = false;
     /**
      * Identificador de objeto
      */
@@ -56,7 +56,6 @@ public class EspacioFicha extends JLabel {
      * variable que sirve para calcular el movimiento del objeto
      */
     private Point offset;
- 
 
     int widthColi = 78;
     int heightColi = 40;
@@ -82,18 +81,25 @@ public class EspacioFicha extends JLabel {
         this.ocupada = ocupada;
     }
 
-    
     public void rotar(int grados) {
         this.grados = grados;
         widthColi = 40;
         heightColi = 78;
-//        d.setSize(40, 78);
-//        this.setSize(d);
-//        this.setPreferredSize(d);
+        this.x = x + (this.getWidth() / 4);
+        this.y = y - (this.getHeight() / 4);
         this.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 1));
         this.repaint();
+//     
 //        this.setBorder(BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 1));
 
+    }
+
+    public void acomodar() {
+        d.setSize(40, 78);
+        this.setSize(d);
+        this.setPreferredSize(d);
+        this.setLugar(x, y);
+        this.repaint();
     }
 
     public void paintComponent(Graphics g) {
@@ -103,6 +109,7 @@ public class EspacioFicha extends JLabel {
 
         gx.rotate(r, getWidth() / 2, getHeight() / 2); //Rotate 0.2 radians around the center of the label
 
+//        gx.drawRect(x, y, widthColi, heightColi);
         super.paintComponent(g);
 
     }
@@ -119,6 +126,14 @@ public class EspacioFicha extends JLabel {
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(x, y, 78, 78);
+        System.out.println("x: " + x + "   y: " + y);
+        System.out.println("W: " + widthColi + "   H: " + heightColi);
+
+        System.out.println(this.getLocation());
+        Rectangle r = new Rectangle(x, y, widthColi, heightColi);
+        System.out.println("Centro rectangulo: " + r.getCenterX());
+//        r.setLocation(x, y);
+//        System.out.println("Centro Ficha: "+this.);
+        return r;
     }
 }

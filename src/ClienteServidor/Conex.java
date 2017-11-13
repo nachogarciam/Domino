@@ -19,7 +19,6 @@ public class Conex {
 
     ArrayList<Thread> lista = new ArrayList<Thread>();
     ArrayList<Socket> listaSockets = new ArrayList<Socket>();
-   
 
     String ip;
     ObjectOutputStream mensaje;
@@ -57,15 +56,15 @@ public class Conex {
                                 if (o.getClass().toString().equals("class java.lang.String")) {
                                     mensajeRecibido = (String) o;
                                 } else if (o.getClass().toString().equals("class Juego.Tablero")) {
-                                    Control.pintarTablero();
                                     Control.obtenerDatos((Tablero) o);
+                                    Control.pintarTablero();
                                     System.out.println("Tu turno es: " + Control.getJugador().isTurno());
-                                }else if(o.getClass().toString().equals("class Juego.Movimiento")){
+                                } else if (o.getClass().toString().equals("class Juego.Movimiento")) {
 //                                    System.out.println("qweqw");
-                                    Movimiento m=(Movimiento) o;
-                                    
+                                    Movimiento m = (Movimiento) o;
+
                                     System.out.println(m.getJugador().isTurno());
-                                    if(m.getJugador().isTurno()){
+                                    if (m.getJugador().isTurno()) {
 //                                        System.out.println("qweqw");
                                         Frame.btnMensaje.setEnabled(true);
                                         Control.getJugador().setTurno(true);
@@ -115,7 +114,5 @@ public class Conex {
         }
 
     }
-
-   
 
 }

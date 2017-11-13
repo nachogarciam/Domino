@@ -68,6 +68,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     private int nuevo_X = 1;
     private int nuevo_Y = 1;
 
+    int widthColi = 78;
+    int heightColi = 40;
     public Ficha(int ladoA, int ladoB) {
         this.ladoA = ladoA;
         this.ladoB = ladoB;
@@ -145,7 +147,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
                 } else {
                     System.out.println("Colision");
-                    TableroPanel.listaEspacios.get(i).setOcupada(true);
+//                    TableroPanel.listaEspacios.get(i).setOcupada(true);
                     this.setLocation(TableroPanel.listaEspacios.get(i).getLocation());
                     this.rotar(90);
                 }
@@ -188,6 +190,10 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     }
 
     public void rotar(int grados) {
+        this.widthColi=40;
+        this.heightColi=78;
+        this.x = x + (this.getWidth() / 4);
+        this.y = y - (this.getHeight() / 4);
         this.grados = grados;
         repaint();
     }
@@ -207,6 +213,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         this.x = x;
         this.y = y;
         setLocation(x, y);
+
     }
 
     public boolean collision(EspacioFicha f) {
@@ -215,6 +222,6 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     }
 
     public Rectangle getBounds() {
-        return new Rectangle(x, y, 78, 78);
+        return new Rectangle(x,y, widthColi, heightColi);
     }
 }

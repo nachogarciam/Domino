@@ -223,6 +223,7 @@ public class Control {
         } else {
             jugador = new Jugador("Player 2", tablero2.getListaTablero());
         }
+        System.out.println(tablero2.getListaTablero().toString());
 
         jugador.tieneMula();
 //        if (jugador.isTurno()) {
