@@ -193,8 +193,9 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
             if (TableroPanel.listaEspacios.get(0).getLadoDispA() == 5 && TableroPanel.listaEspacios.get(0).getLadoDispB() == 5) {
                 if (this.getLadoA() == 5 && this.getLadoB() == 5) {
                     this.setLugar((int) TableroPanel.listaEspacios.get(0).getLocation().getX(), (int) TableroPanel.listaEspacios.get(0).getLocation().getY());
-                    TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(0))));
+
                     TableroPanel.listaEspacios.get(0).setOcupada(true);
+                    TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(0))));
                     Control.getTablero().getListaTablero().add(this);
                     Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
                     TableroPanel.listaEspacios.get(0).setOcupadoA(true);
@@ -217,7 +218,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                     } else {
                         System.out.println("Eaa");
                         System.out.println(i);
-                        if (!TableroPanel.listaEspacios.get(i).isOcupadoA()) {
+//                        if()
+                        if (TableroPanel.listaEspacios.get(i).isOcupadoA()) {
                             if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoA()) {
                                 this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
                                 TableroPanel.listaEspacios.get(i).setOcupada(true);
@@ -230,9 +232,9 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
                             } else if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoB()) {
                                 this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
+                                TableroPanel.listaEspacios.get(i).setOcupadoB(true);
                                 TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(i))));
                                 this.setPonida(true);
-                                TableroPanel.listaEspacios.get(i).setOcupadoB(true);
                                 rotar(TableroPanel.listaEspacios.get(i), "B");
                                 Control.getTablero().getListaTablero().add(this);
                                 Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
