@@ -218,9 +218,11 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                     } else {
                         System.out.println("Eaa");
                         System.out.println(i);
-                        if (TableroPanel.listaEspacios.get(i).getWidth() < (TableroPanel.tam.getWidth() / 2)) {
+                        if (TableroPanel.listaEspacios.get(i).getX() < (TableroPanel.tam.getWidth() / 2)) {
+                            System.out.println("LadoA");
                             if (!TableroPanel.listaEspacios.get(i).isOcupadoA()) {
                                 if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoA()) {
+                                    System.out.println(TableroPanel.listaEspacios.get(i).getLadoDispA()+"   "+this.getLadoB());
                                     this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
                                     TableroPanel.listaEspacios.get(i).setOcupada(true);
                                     TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(i))));
@@ -231,11 +233,12 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                                     Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
 
                                 } else if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoB()) {
+                                    System.out.println(TableroPanel.listaEspacios.get(i).getLadoDispA()+"   "+this.getLadoB());
                                     this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
-                                    TableroPanel.listaEspacios.get(i).setOcupadoB(true);
+                                    TableroPanel.listaEspacios.get(i).setOcupada(true);
                                     TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(i))));
                                     this.setPonida(true);
-                                    TableroPanel.listaEspacios.get(i).setOcupadoA(true);
+                                    TableroPanel.listaEspacios.get(i).setOcupadoB(true);
                                     rotar(TableroPanel.listaEspacios.get(i), "B");
                                     Control.getTablero().getListaTablero().add(this);
                                     Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
@@ -243,19 +246,20 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                                 }
                             }
                         } else {
+                            System.out.println("LadoB");
                             if (!TableroPanel.listaEspacios.get(i).isOcupadoB()) {
                                 if (TableroPanel.listaEspacios.get(i).getLadoDispB() == this.getLadoA()) {
                                     this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
                                     TableroPanel.listaEspacios.get(i).setOcupada(true);
                                     TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(i))));
                                     this.setPonida(true);
-                                    TableroPanel.listaEspacios.get(i).setOcupadoB(true);
+                                    TableroPanel.listaEspacios.get(i).setOcupadoA(true);
                                     rotar(TableroPanel.listaEspacios.get(i), "A");
                                     Control.getTablero().getListaTablero().add(this);
                                     Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
                                 } else if (TableroPanel.listaEspacios.get(i).getLadoDispB() == this.getLadoB()) {
                                     this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
-                                    TableroPanel.listaEspacios.get(i).setOcupadoB(true);
+                                    TableroPanel.listaEspacios.get(i).setOcupada(true);
                                     TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(i))));
                                     this.setPonida(true);
                                     TableroPanel.listaEspacios.get(i).setOcupadoA(true);
@@ -354,10 +358,9 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                 if (ef.getLadoDisponible().equalsIgnoreCase("A")) {
                     if (disponible.equalsIgnoreCase("A")) {
                         this.rotar(180);
-                    } else if (disponible.equalsIgnoreCase("B")) {
+                    } else {
                         this.rotar(360);
                     }
-//                    System.out.println("Holapinsheputita");
 
                 }
 
