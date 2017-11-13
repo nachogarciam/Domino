@@ -80,7 +80,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
     int heightColi = 40;
     String orientacion = "Horizontal";
 
-    int yano = 0;
+    static int yano = 0;
 
     public Ficha(int ladoA, int ladoB) {
         this.ladoA = ladoA;
