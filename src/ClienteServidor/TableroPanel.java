@@ -53,9 +53,9 @@ public class TableroPanel extends javax.swing.JPanel {
 
     Thread t2 = new Thread() {
         public void run() {
-//            while (true) {
-//                metodoPerron();
-//            }
+            while (true) {
+                metodoPerron();
+            }
         }
     };
 
@@ -231,7 +231,7 @@ public class TableroPanel extends javax.swing.JPanel {
             listaEspacios.get(0).repaint();
 //            this.repaint();
 
-        } else {
+        } else{
 
             if (ef.isMula()) {
                 if (!ef.isOcupadoA()) {
@@ -253,7 +253,8 @@ public class TableroPanel extends javax.swing.JPanel {
     }
 
     public static void metodoPerron() {
-        for (int i = 0; i < listaEspacios.size(); i++) {
+        int n=listaEspacios.size();
+        for (int i = 0; i < n; i++) {
             if (listaEspacios.get(i).isOcupada()) {
 //                System.out.println(i);
                 crearEspacio(listaEspacios.get(i));
