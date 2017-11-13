@@ -248,11 +248,11 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 //                    System.out.println("Colision");
 //                    TableroPdanel.listaEspacios.get(i).setOcupada(true);
 //                    this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
-                        if (TableroPanel.listaEspacios.get(i).getOrientacion().equalsIgnoreCase("Vertical")) {
-//                        this.rotar(90);
-                        } else {
-                            this.rotar(90);
-                        }
+//                        if (TableroPanel.listaEspacios.get(i).getOrientacion().equalsIgnoreCase("Vertical")) {
+////                        this.rotar(90);
+//                        } else {
+//                            this.rotar(90);
+//                        }
 
                     }
                 }
