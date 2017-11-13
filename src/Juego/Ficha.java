@@ -188,7 +188,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
         nuevo_X = (this.getLocation().x);
         nuevo_Y = (this.getLocation().y);
         this.setLocation(nuevo_X, nuevo_Y);
-
+//para primera ficha del juego
         if (yano == 0) {
             if (TableroPanel.listaEspacios.get(0).getLadoDispA() == 5 && TableroPanel.listaEspacios.get(0).getLadoDispB() == 5) {
                 if (this.getLadoA() == 5 && this.getLadoB() == 5) {
@@ -215,7 +215,6 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                     if (TableroPanel.listaEspacios.get(i).isOcupada()) {
 
                     } else {
-                        //ESTE PARA LA MULA DE 5 (CON LA QUE DEBES DE INICIAR)
 
                         if (!TableroPanel.listaEspacios.get(i).isOcupadoA()) {
                             if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoA()) {
@@ -226,6 +225,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                                 rotar(TableroPanel.listaEspacios.get(i), "A");
                                 Control.getTablero().getListaTablero().add(this);
                                 Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
+                                TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(i))));
+
                             } else if (TableroPanel.listaEspacios.get(i).getLadoDispA() == this.getLadoB()) {
                                 this.setLugar((int) TableroPanel.listaEspacios.get(i).getLocation().getX(), (int) TableroPanel.listaEspacios.get(i).getLocation().getY());
                                 this.setPonida(true);
@@ -233,6 +234,8 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                                 rotar(TableroPanel.listaEspacios.get(i), "B");
                                 Control.getTablero().getListaTablero().add(this);
                                 Control.enviarMovimiento(new Movimiento(Control.getJugador(), Control.getTablero().getListaTablero()));
+                                TableroPanel.metodoPerron(listaEspacios.get(listaEspacios.indexOf(listaEspacios.get(i))));
+
                             }
                         }
                         if (!TableroPanel.listaEspacios.get(i).isOcupadoB()) {
@@ -252,14 +255,15 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 //                            this.rotar(90);
 //                        }
                     }
+                    if (this.getLocation() != TableroPanel.listaEspacios.get(i).getLocation()) {
+                        this.setLugar(this.x2, this.y2);
+                    }
                 }
             } else {
                 System.out.println("no se puede puto");
             }
 
-//            if (this.getLocation() != TableroPanel.listaEspacios.get(i).getLocation()) {
-//                this.setLugar(this.x2, this.y2);
-//            }
+//           
         }
 
 //        if (collision(Control.getJugador().getListaFichas().get(0))) {
