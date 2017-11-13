@@ -120,20 +120,29 @@ public class TableroPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         PanelTablero = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 0, 102));
 
         PanelTablero.setBackground(new java.awt.Color(108, 122, 137));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario1_2.png"))); // NOI18N
+
         javax.swing.GroupLayout PanelTableroLayout = new javax.swing.GroupLayout(PanelTablero);
         PanelTablero.setLayout(PanelTableroLayout);
         PanelTableroLayout.setHorizontalGroup(
             PanelTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 827, Short.MAX_VALUE)
+            .addGroup(PanelTableroLayout.createSequentialGroup()
+                .addGap(333, 333, 333)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(397, Short.MAX_VALUE))
         );
         PanelTableroLayout.setVerticalGroup(
             PanelTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTableroLayout.createSequentialGroup()
+                .addContainerGap(427, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -226,5 +235,6 @@ public class TableroPanel extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JPanel PanelTablero;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
