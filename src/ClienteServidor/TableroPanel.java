@@ -222,7 +222,7 @@ public class TableroPanel extends javax.swing.JPanel {
 
         if (listaEspacios.size() == 0) {
             listaEspacios.add(ef);
-            listaEspacios.get(0).setLugar((int)(tam.getWidth() / 2) - (listaEspacios.get(0).getWidth() / 2), (int)(tam.getHeight() / 2) - (listaEspacios.get(0).getWidth() / 2));
+            listaEspacios.get(0).setLugar((int) (tam.getWidth() / 2) - (listaEspacios.get(0).getWidth() / 2), (int) (tam.getHeight() / 2) - (listaEspacios.get(0).getWidth() / 2));
             map.put("Ficha", listaEspacios.get(0));
             PanelTablero.add(listaEspacios.get(0));
             PanelTablero.repaint();
@@ -231,13 +231,13 @@ public class TableroPanel extends javax.swing.JPanel {
             listaEspacios.get(0).repaint();
 //            this.repaint();
 
-        } else{
+        } else {
 
             if (ef.isMula()) {
                 if (!ef.isOcupadoA()) {
                     EspacioFicha e = new EspacioFicha(ef.getLadoDispA(), "A");
                     listaEspacios.add(e);
-                    listaEspacios.get(listaEspacios.indexOf(e)).setLugar((listaEspacios.get(listaEspacios.indexOf(ef)).getX()-59), listaEspacios.get(listaEspacios.indexOf(ef)).getY());
+                    listaEspacios.get(listaEspacios.indexOf(e)).setLugar((listaEspacios.get(listaEspacios.indexOf(ef)).getX() - 59), listaEspacios.get(listaEspacios.indexOf(ef)).getY());
                     map.put("Ficha", listaEspacios.get(listaEspacios.indexOf(e)));
                     PanelTablero.add(listaEspacios.get(listaEspacios.indexOf(e)));
                     PanelTablero.repaint();
@@ -245,7 +245,13 @@ public class TableroPanel extends javax.swing.JPanel {
 //                    this.repaint();
                 }
                 if (!ef.isOcupadoB()) {
-
+                    EspacioFicha e = new EspacioFicha(ef.getLadoDispA(), "B");
+                    listaEspacios.add(e);
+                    listaEspacios.get(listaEspacios.indexOf(e)).setLugar((listaEspacios.get(listaEspacios.indexOf(ef)).getX() + 59), listaEspacios.get(listaEspacios.indexOf(ef)).getY());
+                    map.put("Ficha", listaEspacios.get(listaEspacios.indexOf(e)));
+                    PanelTablero.add(listaEspacios.get(listaEspacios.indexOf(e)));
+                    PanelTablero.repaint();
+                    listaEspacios.get(listaEspacios.indexOf(e)).repaint();
                 }
             }
         }
@@ -255,10 +261,10 @@ public class TableroPanel extends javax.swing.JPanel {
     public static void metodoPerron(EspacioFicha ef) {
 //        int n=listaEspacios.size();
 //        for (int i = 0; i < n; i++) {
-            if (ef.isOcupada()) {
+        if (ef.isOcupada()) {
 //                System.out.println(i);
-                crearEspacio(ef);
-            }
+            crearEspacio(ef);
+        }
 //        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

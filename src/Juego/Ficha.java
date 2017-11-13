@@ -284,14 +284,17 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        if (Control.getJugador().isTurno()) {
-            Point current = this.getScreenLocation(e);
-            offset = new Point((int) current.getX() - (int) start_drag.getX(), (int) current.getY() - (int) start_drag.getY());
-            Point new_location = new Point((int) (this.start_loc.getX() + offset.getX()), (int) (this.start_loc.getY() + offset.getY()));
-            this.setLocation(new_location);
-            this.x = (int) offset.getX();
-            this.y = (int) offset.getY();
+        if(!this.isPonida()){
+                if (Control.getJugador().isTurno()) {
+                    Point current = this.getScreenLocation(e);
+                    offset = new Point((int) current.getX() - (int) start_drag.getX(), (int) current.getY() - (int) start_drag.getY());
+                    Point new_location = new Point((int) (this.start_loc.getX() + offset.getX()), (int) (this.start_loc.getY() + offset.getY()));
+                    this.setLocation(new_location);
+                    this.x = (int) offset.getX();
+                    this.y = (int) offset.getY();
+                }
         }
+       
 
     }
 
@@ -331,7 +334,7 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
                     if(disponible.equalsIgnoreCase("A")){
                          this.rotar(180);
                     }else if(disponible.equalsIgnoreCase("B")){
-                        this.rotar(-180);
+                        this.rotar(360);
                     }
 //                    System.out.println("Holapinsheputita");
                    
