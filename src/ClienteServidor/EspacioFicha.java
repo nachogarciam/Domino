@@ -62,6 +62,9 @@ public class EspacioFicha extends JLabel {
 
     int ladoDispA;
     int ladoDispB;
+    
+    boolean ocupadoA=false;
+    boolean ocupadoB=false;
 
     String orientacion = "Horizontal";
 
@@ -101,6 +104,22 @@ public class EspacioFicha extends JLabel {
 
     public void setLadoDispB(int ladoDispB) {
         this.ladoDispB = ladoDispB;
+    }
+
+    public boolean isOcupadoA() {
+        return ocupadoA;
+    }
+
+    public void setOcupadoA(boolean ocupadoA) {
+        this.ocupadoA = ocupadoA;
+    }
+
+    public boolean isOcupadoB() {
+        return ocupadoB;
+    }
+
+    public void setOcupadoB(boolean ocupadoB) {
+        this.ocupadoB = ocupadoB;
     }
 
     public void rotar(int grados) {

@@ -213,7 +213,6 @@ public class TableroPanel extends javax.swing.JPanel {
 
         if (Control.getTablero().getListaTablero().size() == 0) {
             listaEspacios.add(new EspacioFicha(5, 5));
-//            e = new EspacioFicha(5, 5);
             listaEspacios.get(0).setLugar((PanelTablero.getWidth() / 2) - (listaEspacios.get(0).getWidth() / 2), (PanelTablero.getHeight() / 2) - (listaEspacios.get(0).getWidth() / 2));
             map.put("Ficha", listaEspacios.get(0));
             PanelTablero.add(listaEspacios.get(0));
