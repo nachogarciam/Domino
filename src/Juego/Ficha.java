@@ -133,12 +133,19 @@ public class Ficha extends JLabel implements Serializable, MouseListener, MouseM
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        this.start_drag = getScreenLocation(e);
+        if(Control.getJugador().isTurno()){
+             this.start_drag = getScreenLocation(e);
         this.start_loc = this.getLocation();
+        }else{
+            System.out.println("No es tu turno");
+            this.setLugar(x2, y2);
+        }
+       
 //        System.out.println("Pressed");
     }
 
