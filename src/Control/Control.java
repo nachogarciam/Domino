@@ -168,10 +168,10 @@ public class Control {
                 while (true) {
                     if (jugador.isTurno()) {
                         //aqui algo para desbloquear las fichas
-                        Frame.btnMensaje.setEnabled(true);
+                       
 
                     } else {
-                        Frame.btnMensaje.setEnabled(false);
+                        
                     }
                 }
             }

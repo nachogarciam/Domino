@@ -68,7 +68,6 @@ public class Conex {
 //                                    System.out.println(m.getJugador().isTurno());
                                     if (m.getJugador().isTurno()) {
 //                                        System.out.println("qweqw");
-                                        Frame.btnMensaje.setEnabled(true);
                                         Control.getJugador().setTurno(true);
                                     }
                                 }

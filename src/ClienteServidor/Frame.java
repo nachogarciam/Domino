@@ -69,11 +69,8 @@ public class Frame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        btnMensaje = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         btnInstrucciones = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
@@ -98,13 +95,6 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        btnMensaje.setText("Mensaje");
-        btnMensaje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMensajeActionPerformed(evt);
-            }
-        });
-
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnPlayB.png"))); // NOI18N
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
@@ -118,23 +108,9 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Piezas");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LogoInicio.png"))); // NOI18N
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         btnInstrucciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/instruccionesBTN.png"))); // NOI18N
         btnInstrucciones.setBorderPainted(false);
@@ -156,20 +132,12 @@ public class Frame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnMensaje)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(67, 67, 67)
-                                .addComponent(jButton5))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jButton1)
-                                .addGap(342, 342, 342)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(114, 114, 114)
-                                .addComponent(btnInstrucciones, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(111, 111, 111)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(425, 425, 425)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(114, 114, 114)
+                        .addComponent(btnInstrucciones, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(111, 111, 111)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 159, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -180,19 +148,10 @@ public class Frame extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(btnInstrucciones))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(jButton5))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(65, 65, 65)
-                .addComponent(btnMensaje)
-                .addContainerGap(178, Short.MAX_VALUE))
+                    .addComponent(jButton2)
+                    .addComponent(btnInstrucciones)
+                    .addComponent(jButton4))
+                .addContainerGap(309, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -240,17 +199,6 @@ public class Frame extends javax.swing.JFrame {
 //        Nuevo_Objeto();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void btnMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMensajeActionPerformed
-        // TODO add your handling code here:
-//        if (e == null) {
-//           control.enviarMensaje();
-//        } else {
-//            e.enviarMensaje();
-//        }
-
-//        control.moverPieza();
-    }//GEN-LAST:event_btnMensajeActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 //        control.crearJugador("Player 1");
         control.iniciar();
@@ -262,29 +210,9 @@ public class Frame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-//        System.out.println(Control.getJugador().getListaFichas().toString());
-//        System.out.println(Control.getTablero().getListaTablero().toString());
-        System.out.println();
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-//        ficha.rotar(90);
-//        this.jPanel1.repaint();
-        Control.pintarTablero();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void btnInstruccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInstruccionesActionPerformed
-        InstruccionesPanel ins = new InstruccionesPanel();
-
-        ins.setSize(jPanel2.getWidth(), jPanel2.getHeight());
-
-//        jPanel1.removeAll();
-        jPanel2.add(ins);
-        jPanel2.revalidate();
-        jPanel2.repaint();
+        InstruccionesFrm ins = new InstruccionesFrm();
+        ins.setVisible(true);
     }//GEN-LAST:event_btnInstruccionesActionPerformed
 
     /**
@@ -346,11 +274,8 @@ public class Frame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInstrucciones;
-    public static javax.swing.JButton btnMensaje;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     public static javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
